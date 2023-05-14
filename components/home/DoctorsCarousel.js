@@ -53,16 +53,15 @@ const DoctorsCarousel = () => {
             )}
             <Card.Cover
               style={styles.cardImage}
-              source={{ uri: "https://source.unsplash.com/1024x768/?nature" }}
-            />
+              source={require("../../assets/images/home/doctor.png")}            />
           </View>
           <Card.Content style={styles.cardContent}>
             <View style={styles.roundedBox}>
               <View>
                 <Title className="text-center font-extrabold text-sm">
-                  {doctor.name}
+                  د. {doctor.name}
                 </Title>
-                <Paragraph className=" text-center font-light text-sm mb-10">
+                <Paragraph className=" text-center font-light text-sm mb-7">
                   {doctor.categories.map((cat) => cat[1]).join(", ")}
                 </Paragraph>
               </View>
@@ -88,25 +87,31 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 2,
     width: 160,
-    height:250,
+    height:240,
     marginHorizontal: 10,
     position: "relative",
     marginBottom:70,
     bottom:10,
     backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 5,
+
   },
   cardImageContainer: {
     width: "100%",
     height: 120,
     overflow: "hidden",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    backgroundColor: '#fff',
+    borderRadius: 5,
   },
   cardImage: {
     alignSelf:'center',
-    width: "95%",
+    width: "60%",
     height: "100%",
+    top:15,
+    backgroundColor: '#fff',
+    borderRadius: 5,
   },
   cardContent: {
     position: "relative",
@@ -117,6 +122,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
     marginTop: 5,
+    top:5
   },
   ScrollView: {
     borderRadius: 10,
@@ -140,6 +146,7 @@ const styles = StyleSheet.create({
     zIndex:1,
     top: 10,
     left:5,
+    
 
     
   },

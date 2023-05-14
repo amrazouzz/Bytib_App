@@ -3,13 +3,13 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import * as Icons from "react-native-heroicons/outline";
 import ImageCarousel from "../components/home/ImageCarousel";
-import Header from "../components/home/Header";
 import NavBar from "../components/home/NavBar";
 import CategoriesCarousel from "../components/home/CategoriesCarousel";
 import DoctorsCarousel from "../components/home/DoctorsCarousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Header from "../components/fav/Header";
 
-const HomeScreen = () => {
+const FavScreen = () => {
   const navigation = useNavigation();
   useEffect(() => {
    let loggedIn = AsyncStorage.getItem('AccessToken')
@@ -27,38 +27,23 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
       <ScrollView>
-        {/* Header */}
+        <Header />
         <View>
-          <Header />
+          {/* <Header /> */}
 
           {/* Body */}
 
+            {/* Online Drs */}
           <View className="px-5">
-            <ImageCarousel />
+
           </View>
 
-          {/* Category */}
+          {/* Chats */}
           <View className="px-5 mb-0">
-            <View className="mt-5 flex flex-row justify-between mb-4">
-              <Text className="text-2xl font-extrabold">Category</Text>
-              <Text onPress={()=>navigation.navigate('categories')} className="font-light text-lg">See All</Text>
-            </View>
-            <View>
-              <CategoriesCarousel />
-            </View>
+            
+            
           </View>
-
-          {/* Doctors */}
-          <View className="py-2 px-5">
-            <View className=" flex flex-row justify-between mb-4 mt-2">
-              <Text className="text-2xl font-extrabold">Top Rated</Text>
-              <Text className="font-light text-lg">See All</Text>
-            </View>
-            <View>
-              <DoctorsCarousel />
-            </View>
-          </View>
-        </View>
+    </View>
 
         {/* bottom nav */}
 
@@ -68,4 +53,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default FavScreen;

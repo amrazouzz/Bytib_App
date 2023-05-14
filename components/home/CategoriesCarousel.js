@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     width: 120,
     marginHorizontal: 5,
     position: 'relative',
-    height:170
+    height:170,
   },
   cardImage: {
     width: '100%',

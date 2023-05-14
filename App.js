@@ -18,6 +18,10 @@ import ArticleDetails from './screens/ArticleDetails';
 import NotificationsScreen from './screens/Notifications';
 import CategoriesScreen from './screens/CategoriesScreen';
 import CategoryDoctorsScreen from './screens/CategoryDoctors';
+import PasswordReset from './screens/auth/PasswordResset';
+import SuccessfulPassword from './screens/auth/SuccessfulPassword';
+import ChatScreen from './screens/ChatScreen';
+import FavScreen from './screens/FavoritesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,11 +37,15 @@ export default function App() {
                 <Stack.Screen name="auth" component={Auth} />
                 <Stack.Screen name="loginScreen" component={LoginScreen} />
                 <Stack.Screen name="forgotScreen" component={ForgotScreen} />
+                <Stack.Screen name="passwordReset" component={PasswordReset} />
+                <Stack.Screen name="successfulPassword" component={SuccessfulPassword} />
                 <Stack.Screen name="verificationScreen" component={VerificationScreen} />
                 <Stack.Screen name="signupScreen" component={SignupScreen} />
                 <Stack.Screen name="completeAccount" component={CompeleteAccountScreen} />
 
                 <Stack.Screen name="home" component={HomeScreen} />
+                <Stack.Screen name="chat" component={ChatScreen} />
+                <Stack.Screen name="favScreen" component={FavScreen} />
                 <Stack.Screen name="articles" component={Articles} />
                 <Stack.Screen name="articleDetails" component={ArticleDetails} />
                 <Stack.Screen name="notifications" component={NotificationsScreen} />

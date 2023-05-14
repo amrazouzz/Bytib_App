@@ -5,11 +5,14 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const OnboardingScreen = ({ imageSource, title, description, onPress }) => {
     const navigation = useNavigation();
-  useEffect(() => {
-    let loggedIn = AsyncStorage.getItem("AccessToken");
-    if (loggedIn) {navigation.navigate('home')}
-
-  }, [])
+    useEffect(() => {
+      AsyncStorage.getItem("AccessToken")
+        .then(loggedIn => {
+          if (loggedIn) {
+            navigation.navigate('home')
+          }
+        });
+    }, []);
   
     return (
     <View style={styles.container}>

@@ -14,12 +14,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
 
-const ForgotScreen = () => {
-  const [email, setEmail] = useState("");
+const PasswordReset = () => {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword ] = useState("");
   const navigation = useNavigation();
 
-  const handleForgotPress = async () => {
-    navigation.navigate('verificationScreen')
+  const handleConfirmPress = async () => {
+    navigation.navigate('successfulPassword')
   };
 
   useLayoutEffect(() => {
@@ -37,25 +38,31 @@ const ForgotScreen = () => {
       </SafeAreaView>
       <View style={styles.container}>
 
-        <View style={styles.formContainer}>
-        <Image style={{width:200, marginBottom:10}} source={require('../../assets/images/auth/forgot.png')} />
+        <View style={styles.formContainer} className="mb-4">
           <View>
-            <Text className='text-xl font-bold' style={{color:'#509ca4',    fontWeight:'900' }}>FORGOT PASSWORD</Text>
+            <Text className='text-xl font-bold' style={{color:'#509ca4',    fontWeight:'900' }}>PASSWORD RESET</Text>
             <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>Discription</Text>
         </View>
           <TextInput
             style={styles.input}
-            placeholder="Email Or Mobile No"
+            placeholder="Password"
             placeholderTextColor="#b3c3cd"
-            value={email}
-            onChangeText={setEmail}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Re Password"
+            placeholderTextColor="#b3c3cd"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
           />
           
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={handleForgotPress}
+            onPress={handleConfirmPress}
           >
-            <Text style={styles.buttonText}>SEND</Text>
+            <Text style={styles.buttonText}>CONFIRM</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#509ca4",
     borderRadius: 5,
     paddingVertical: 12,
-    paddingHorizontal: 100,
+    paddingHorizontal: 90,
     marginTop: 20,
   },
   buttonText: {
@@ -130,4 +137,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ForgotScreen;
+export default PasswordReset;

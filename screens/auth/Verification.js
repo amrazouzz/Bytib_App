@@ -18,7 +18,9 @@ const VerificationScreen = () => {
   const [timer, setTimer] = useState(60);
   const navigation = useNavigation();
 
-  const handleForgotPress = async () => {};
+  const handleForgotPress = async () => {
+    navigation.navigate("passwordReset");
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({

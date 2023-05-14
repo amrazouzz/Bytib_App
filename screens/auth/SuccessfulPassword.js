@@ -11,7 +11,7 @@ import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Auth = () => {
+const SuccessfulPassword = () => {
   const navigation = useNavigation();
 
   const handleBackPress = () => {
@@ -25,38 +25,26 @@ const Auth = () => {
   }, []);
 
 
-  useEffect(() => {
-    AsyncStorage.getItem("AccessToken")
-      .then(loggedIn => {
-        if (loggedIn) {
-          navigation.navigate('home')
-        }
-      });
-  }, []);
-
+ 
   const handleLoginPress = () => {
     navigation.navigate('loginScreen')
-  };
-
-  const handleSignUpPress = () => {
-    navigation.navigate('signupScreen')
   };
 
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/auth/auth_bg.jpg")}
+        source={require("../../assets/images/auth/successful.png")}
         style={styles.image}
       >
         <SafeAreaView style={{ flex: 1 }}>
           <Header />
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleLoginPress}>
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
+              <Text style={styles.Text} >THE RESET WAS SUCCESSFUL</Text>
+              <Text style={styles.Discription} >some description some description some description</Text>
+
             <View style={{ flexDirection: "column" }}>
-              <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleSignUpPress}>
-                <Text style={styles.buttonText}>Sign Up</Text>
+              <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleLoginPress}>
+                <Text style={styles.buttonText}>Login</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -92,6 +80,7 @@ const styles = StyleSheet.create({
     margin:5,
     paddingHorizontal: 20,
     textAlign:'center',
+    marginBottom:60
 
   },
   buttonText: {
@@ -100,6 +89,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf:'center'
   },
-});
+  Text: {
+    color: "#000",
+    fontSize: 20,
+    fontWeight: "900",
+    alignSelf:'center',
+    marginBottom:5
+  },
+  Discription: {
+    color: "#000",
+    fontSize: 16,
+    fontWeight: "100",
+    alignSelf:'center',
+    textAlign:"center",
+    marginBottom:5,
+    paddingHorizontal:50,
+}});
 
-export default Auth;
+export default SuccessfulPassword;

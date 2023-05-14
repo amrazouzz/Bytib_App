@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useContext, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Alert,
+  Image,
 } from "react-native";
 import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -22,11 +23,13 @@ const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false); // add state for showing password
   const navigation = useNavigation();
   useEffect(() => {
-   let loggedIn = AsyncStorage.getItem('AccessToken')
-   if (loggedIn) {
-    navigation.navigate('home')
-   }
-  }, )
+    AsyncStorage.getItem("AccessToken")
+      .then(loggedIn => {
+        if (loggedIn) {
+          navigation.navigate('home')
+        }
+      });
+  }, []);
   
 
   const handleLoginPress = async () => {
@@ -69,7 +72,8 @@ const LoginScreen = () => {
       </SafeAreaView>
       <View style={styles.container}>
         <View style={styles.formContainer}>
-          <Icon.KeyIcon size={150} color={"#509ca4"} />
+          {/* <Icon.KeyIcon size={150} color={"#509ca4"} /> */}
+          <Image style={{width:200, marginBottom:10}} source={require('../../assets/images/auth/login.png')} />
           <TextInput
             style={styles.input}
             placeholder="Email Or Mobile No"

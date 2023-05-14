@@ -51,8 +51,8 @@ const CategoryDoctorsScreen = ({ route }) => {
           resizeMode="cover"
         />
         </>}
-        <View>
-        <Text style={styles.doctorName}>{item.name}</Text>
+        <View style={{marginRight:20}}>
+        <Text style={styles.doctorName}>د. {item.name}</Text>
         <Text style={styles.doctorCategory}>{item.categories[0][1]}</Text>
         </View>
         <View style={styles.textContainer}>
@@ -110,15 +110,17 @@ const styles = StyleSheet.create({
   doctorName: {
     fontSize: 20,
     fontWeight: "bold",
-    marginLeft: 8,
+    marginLeft: 10,
+
+
   },
   doctorCategory: {
     color: "gray",
     marginLeft: 8,
   },
   doctorPhoto: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     borderRadius: 15,
   },
   textContainer: {

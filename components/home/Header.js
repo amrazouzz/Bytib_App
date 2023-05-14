@@ -11,10 +11,9 @@ export const Header = () => {
 
   const handleLogoutPress = () => {
     console.log('loggedOut')
-    AsyncStorage.removeItem('userToken');
+    AsyncStorage.removeItem('AccessToken');
     AsyncStorage.removeItem('userInfo');
-    navigation.navigate('loginScreen');
- 
+    navigation.navigate('onBoarding');
   }
 
   const handleMicPress = async () => {
@@ -101,7 +100,7 @@ export const Header = () => {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={()=> {console.log('clipboard pressed')}}
+              onPress={handleLogoutPress}
               android_ripple={{
                 borderless: true,
                 radius: 20,

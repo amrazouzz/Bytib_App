@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/notifications/Header";
 import Notification from "../components/notifications/Notification";
@@ -62,7 +62,9 @@ const NotificationsScreen = () => {
 
         <View style={styles.container}>
           <View style={styles.content}>
-            <CheckCircleIcon size={150} color={"#509ca4"} />
+            {/* <CheckCircleIcon size={150} color={"#509ca4"} /> */}
+
+            <Image source={require('../assets/images/home/notifications.png')} />
             <Text style={styles.text}>No Notifications Yet!</Text>
           </View>
         </View>
