@@ -8,6 +8,7 @@ import CategoriesCarousel from "../components/home/CategoriesCarousel";
 import DoctorsCarousel from "../components/home/DoctorsCarousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Header from "../components/fav/Header";
+import DrCarousel from "../components/fav/DrCarousel";
 
 const FavScreen = () => {
   const navigation = useNavigation();
@@ -33,15 +34,11 @@ const FavScreen = () => {
 
           {/* Body */}
 
-            {/* Online Drs */}
-          <View className="px-5">
 
-          </View>
-
-          {/* Chats */}
-          <View className="px-5 mb-0">
+          {/* Fav */}
+          <View className="px-5 mt-5">
             
-            
+            <DrCarousel />
           </View>
     </View>
 

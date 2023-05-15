@@ -8,6 +8,8 @@ import CategoriesCarousel from "../components/home/CategoriesCarousel";
 import DoctorsCarousel from "../components/home/DoctorsCarousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Header from "../components/chat/Header";
+import OnlineDrsCarousel from "../components/chat/OnlineDrsCarousel";
+import ChatsCarousel from "../components/chat/ChatsCarousel";
 
 const ChatScreen = () => {
   const navigation = useNavigation();
@@ -27,21 +29,22 @@ const ChatScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
       <ScrollView>
-        <Header />
         <View>
+
           {/* <Header /> */}
+          <Header />
 
           {/* Body */}
 
             {/* Online Drs */}
           <View className="px-5">
-
+            <Text className='font-extrabold text-xl mb-4 mt-3'>Online Doctors</Text>
+            <OnlineDrsCarousel />
           </View>
 
           {/* Chats */}
-          <View className="px-5 mb-0">
-            
-            
+          <View className="px-5 mb-0 mt-5">
+            <ChatsCarousel />
           </View>
     </View>
 

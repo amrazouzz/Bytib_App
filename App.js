@@ -42,7 +42,6 @@ export default function App() {
                 <Stack.Screen name="verificationScreen" component={VerificationScreen} />
                 <Stack.Screen name="signupScreen" component={SignupScreen} />
                 <Stack.Screen name="completeAccount" component={CompeleteAccountScreen} />
-
                 <Stack.Screen name="home" component={HomeScreen} />
                 <Stack.Screen name="chat" component={ChatScreen} />
                 <Stack.Screen name="favScreen" component={FavScreen} />
