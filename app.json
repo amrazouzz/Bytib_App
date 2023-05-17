@@ -1,15 +1,18 @@
 {
   "expo": {
-    "name": "booking_expo",
-    "slug": "booking_expo",
+    "name": "ByTib",
+    "slug": "bytib",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "platforms": [
+      "android"
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#EAF5FA"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,11 +23,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#EAF5FA"
+      },
+      "package": "com.bytib.bytib"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e5300936-5e16-465b-97e5-38b17a04f0af"
+      }
     }
   }
 }
