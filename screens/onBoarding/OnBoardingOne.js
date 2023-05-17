@@ -67,7 +67,7 @@ const Onboarding = () => {
   return (
     <View style={styles.container}>
       <OnboardingScreen
-        imageSource={require('../../assets/images/onBoarding/onboarding1.jpg')}
+        imageSource={require('../../assets/images/onBoarding/onboarding2.png')}
         title="Description of Screen 1"
         onPress={handlePress}
       />

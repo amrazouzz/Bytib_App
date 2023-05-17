@@ -20,7 +20,7 @@ export default function Header() {
         >
           <Icons.ArrowLeftIcon
             color="#ffffff"
-            className="h-7 w-7 text-gray-500"
+            className="h-7 w-7 font-extrabold"
           />
         </Pressable>
       </View>

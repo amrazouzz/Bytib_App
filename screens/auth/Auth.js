@@ -45,7 +45,7 @@ const Auth = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/auth/auth_bg.jpg")}
+        source={require("../../assets/images/auth/auth_bg.png")}
         style={styles.image}
       >
         <SafeAreaView style={{ flex: 1 }}>

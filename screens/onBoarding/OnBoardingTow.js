@@ -67,7 +67,7 @@ const OnboardingTow = () => {
   return (
     <View style={styles.container}>
       <OnboardingScreen
-        imageSource={require('../../assets/images/onBoarding/onboarding2.jpg')}
+        imageSource={require('../../assets/images/onBoarding/onboarding1.png')}
         title="Description of Screen 2"
         onPress={handlePress}
       />

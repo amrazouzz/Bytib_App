@@ -23,6 +23,7 @@ import SuccessfulPassword from './screens/auth/SuccessfulPassword';
 import ChatScreen from './screens/ChatScreen';
 import FavScreen from './screens/FavoritesScreen';
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
