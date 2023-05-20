@@ -24,7 +24,6 @@ const NavBar = () => {
 
 position: 'absolute',
 alignSelf: 'center',
-backgroundColor: '#EAF5FA',
 width: 70,
 height: 70,
 borderRadius: 35,
@@ -37,12 +36,10 @@ zIndex: 10
 <TouchableOpacity>
     <View style={[styles.button, styles.actionBtn]}>
 
-        {/* <Image style={{ width: 70, height: 70, bottom:4,}}
+        <Image style={{ width: 60, height: 60, top:10}}
             resizeMode="contain"
-            source={require('../../assets/home/NB.png')}/> */}
-            <View style={styles.compassContainer} >
-            <Image  source={require('../../assets/home/navbar/compass.png')} style={styles.CompassIcon} />
-    </View>
+            source={require('../../assets/home/navbar/center.png')}/>
+           
     </View>
 </TouchableOpacity>
 </View>
@@ -55,27 +52,32 @@ zIndex: 10
             onPress={() => navigation.navigate('articles')}
             android_ripple={{borderless: true, radius: 30, color: '#acccd4'}}
           >
-            <IconsSolid.QueueListIcon color="#509ca4" className="h-7 w-7 text-gray-500" />
+            <Image style={styles.navIcon}  source={require('../../assets/home/navbar/menu.png')} />
+
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('chat')}
-            style={styles.IconBehaveM}
             android_ripple={{borderless: true, radius: 30, color: '#acccd4'}}
+            className='right-2'
           >
-            <Icons.ChatBubbleLeftEllipsisIcon color="#509ca4" className="h-7 w-7 text-gray-500" />
+            <Image style={styles.navIcon}  source={require('../../assets/home/navbar/messages.png')} />
+
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('favScreen')}
-            style={styles.IconBehaveM}
-            android_ripple={{borderless: true, radius: 30, color: '#acccd4'}}
-          >
-            <Icons.HeartIcon color="#509ca4" className="h-7 w-7 left-5 " />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('home')}
-            style={styles.IconBehave}
-            android_ripple={{borderless: true, radius: 30, color: '#acccd4', left:5}}
-          >
-            <Icons.HomeIcon  color="#509ca4" className="h-7 left-5 w-7" />
-            {/* <Image  source={require('../../assets/home/navbar/Home.png')} /> */}
-          </TouchableOpacity>
+
+<TouchableOpacity onPress={() => navigation.navigate('favScreen')}
+className='left-7'
+android_ripple={{borderless: true, radius: 30, color: '#acccd4'}}
+>
+
+<Image style={styles.navIcon}   source={require('../../assets/home/navbar/fav.png')} />
+
+</TouchableOpacity>
+<TouchableOpacity onPress={() => navigation.navigate('home')}
+style={styles.IconBehave}
+android_ripple={{borderless: true, radius: 30, color: '#acccd4', left:5}}
+>
+<Image style={styles.navIcon} className='left-5'  source={require('../../assets/home/navbar/home.png')} />
+</TouchableOpacity>
+
         </View>
       </View>
 
@@ -100,17 +102,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     height: 60,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     top:12,
      
     
   },
   IconBehave: {
-    padding: 10
+
   },
   IconBehaveM: {
-    padding: 40,
+    padding: 30,
   },
   button: {
     width: 60,
@@ -139,6 +141,9 @@ CompassIcon:{
   height: 30,
   tintColor: '#ffff',
 
+},
+navIcon:{
+  width:20, height:20
 }
 });
 
