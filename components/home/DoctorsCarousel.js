@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Pressable, TouchableOpacity } from "react-native";
 import { Card, Title, Paragraph } from "react-native-paper";
 import { API_URL } from "../../api/api";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const DoctorsCarousel = () => {
   const [doctors, setDoctors] = useState([]);
   const [clicked, setClicked] = useState(true);
+  const navigation = useNavigation();
+
 
   useEffect(() => {
     getDoctors();
@@ -24,7 +27,11 @@ const DoctorsCarousel = () => {
   const handleFav = () =>{
     setClicked(!clicked);
   }
+  const handleDoctorPress = (doctorId) => {
+    navigation.navigate('doctorProfile', { doctorId });
 
+  };
+  
   return (
     <ScrollView
       style={styles.ScrollView}
@@ -32,57 +39,61 @@ const DoctorsCarousel = () => {
       showsHorizontalScrollIndicator={false}
     >
       {doctors.map((doctor) => (
-        <Card key={doctor.id} style={styles.card}>
-          <View style={styles.cardImageContainer}>
-          {clicked ? (
-              <Icon
-                name="heart"
-                size={30}
-                color="red"
-                style={styles.heartIcon}
-                onPress={handleFav}
+        <TouchableOpacity key={doctor.id} onPress={() => handleDoctorPress(doctor.id)}>
+          <Card style={styles.card}>
+            <View style={styles.cardImageContainer}>
+              {clicked ? (
+                <Icon
+                  name="heart"
+                  size={30}
+                  color="red"
+                  style={styles.heartIcon}
+                  onPress={handleFav}
+                />
+              ) : (
+                <Icon
+                  name="heart-outline"
+                  size={30}
+                  color="black"
+                  style={styles.heartIcon}
+                  onPress={handleFav}
+                />
+              )}
+              <Card.Cover 
+                style={styles.cardImage}
+                source={require("../../assets/images/home/doctor.png")}
               />
-            ) : (
-              <Icon
-                name="heart-outline"
-                size={30}
-                color="black"
-                style={styles.heartIcon}
-                onPress={handleFav}
-              />
-            )}
-            <Card.Cover
-              style={styles.cardImage}
-              source={require("../../assets/images/home/doctor.png")}            />
-          </View>
-          <Card.Content style={styles.cardContent}>
-            <View style={styles.roundedBox}>
-              <View>
-                <Title className="text-center font-extrabold text-sm">
-                  د. {doctor.name}
-                </Title>
-                <Paragraph className=" text-center font-light text-sm mb-7">
-                  {doctor.categories.map((cat) => cat[1]).join(", ")}
-                </Paragraph>
-              </View>
-              <View style={styles.row}>
-                <View style={styles.icons}>
-                  <Icon name="star" size={15} color="#fcdc1c" />
-                  <Text style={styles.iconText}>{doctor.rating}</Text>
-                </View>
-                <View style={styles.icons}>
-                  <Icon name="map-marker" size={15} color="#fcdc1c" />
-                  <Text style={styles.iconText}>{doctor.distance} km</Text>
-                </View>
-              </View>
             </View>
-          </Card.Content>
-        </Card>
+            <Card.Content style={styles.cardContent}>
+              
+              <View style={styles.roundedBox}>
+                <View>
+                  <Title  className="text-center font-extrabold text-sm">
+                    د. {doctor.name}
+                  </Title>
+                  <Paragraph className=" text-center font-light text-sm mb-7">
+                    {doctor.categories.map((cat) => cat[1]).join(", ")}
+                  </Paragraph>
+                </View>
+                <View style={styles.row}>
+                  <View style={styles.icons}>
+                    <Icon name="star" size={15} color="#fcdc1c" />
+                    <Text style={styles.iconText}>{doctor.rating}</Text>
+                  </View>
+                  <View style={styles.icons}>
+                    <Icon name="map-marker" size={15} color="#fcdc1c" />
+                    <Text style={styles.iconText}>{doctor.distance} km</Text>
+                  </View>
+                </View>
+              </View>
+              
+            </Card.Content>
+          </Card>
+        </TouchableOpacity>
       ))}
     </ScrollView>
-  );
-};
-
+)};
+  
 const styles = StyleSheet.create({
   card: {
     marginTop: 2,

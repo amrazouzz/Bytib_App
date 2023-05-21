@@ -22,6 +22,12 @@ import PasswordReset from './screens/auth/PasswordResset';
 import SuccessfulPassword from './screens/auth/SuccessfulPassword';
 import ChatScreen from './screens/ChatScreen';
 import FavScreen from './screens/FavoritesScreen';
+import SidebarScreen from './screens/SidebarScreen';
+import MapScreen from './screens/MapScreen';
+import DrProfile from './screens/DrProfile';
+import BookAppointmentScreen from './screens/booking/BookAppointmentScreen';
+import BookingFaild from './screens/booking/BookingFaild';
+import BookingSuccess from './screens/booking/BookingSuccess';
 
 
 const Stack = createNativeStackNavigator();
@@ -43,8 +49,14 @@ export default function App() {
                 <Stack.Screen name="verificationScreen" component={VerificationScreen} />
                 <Stack.Screen name="signupScreen" component={SignupScreen} />
                 <Stack.Screen name="completeAccount" component={CompeleteAccountScreen} />
+                <Stack.Screen name='sidebar' component={SidebarScreen} />
                 <Stack.Screen name="home" component={HomeScreen} />
                 <Stack.Screen name="chat" component={ChatScreen} />
+                <Stack.Screen name="map" component={MapScreen} />
+                <Stack.Screen name="doctorProfile" component={DrProfile} />
+                <Stack.Screen name="bookAppointment" component={BookAppointmentScreen} />
+                <Stack.Screen name="bookSuccess" component={BookingSuccess} />
+                <Stack.Screen name="bookFail" component={BookingFaild} />
                 <Stack.Screen name="favScreen" component={FavScreen} />
                 <Stack.Screen name="articles" component={Articles} />
                 <Stack.Screen name="articleDetails" component={ArticleDetails} />

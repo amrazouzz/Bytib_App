@@ -9,12 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const Header = () => {
   const navigation = useNavigation();
 
-  const handleLogoutPress = () => {
-    console.log('loggedOut')
-    AsyncStorage.removeItem('AccessToken');
-    AsyncStorage.removeItem('userInfo');
-    navigation.navigate('onBoarding');
-  }
+
 
   const handleMicPress = async () => {
     try {
@@ -100,7 +95,6 @@ export const Header = () => {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={handleLogoutPress}
               android_ripple={{
                 borderless: true,
                 radius: 20,

@@ -8,6 +8,7 @@ import NavBar from "../components/home/NavBar";
 import CategoriesCarousel from "../components/home/CategoriesCarousel";
 import DoctorsCarousel from "../components/home/DoctorsCarousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { TouchableOpacity } from "react-native";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -26,6 +27,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
+       
       <ScrollView>
         {/* Header */}
         <View>
@@ -55,7 +57,9 @@ const HomeScreen = () => {
               <Text className="font-light text-lg">See All</Text>
             </View>
             <View>
+             
               <DoctorsCarousel />
+
             </View>
           </View>
         </View>
