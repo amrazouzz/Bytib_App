@@ -36,13 +36,17 @@ const DrCarousel = () => {
   };
 
   const chunkedDoctors = chunkArray(doctors, 2);
+  const handleDoctorPress = (doctorId) => {
+    navigation.navigate('doctorProfile', { doctorId });
 
+  };
   return (
     <ScrollView style={styles.ScrollView}>
       {chunkedDoctors.map((row, index) => (
         <View key={index} style={styles.row}>
           {row.map((doctor) => (
-            <Card key={doctor.id} style={styles.card}>
+            <TouchableOpacity key={doctor.id} onPress={() => handleDoctorPress(doctor.id)}>
+            <Card style={styles.card}>
               <View style={styles.cardImageContainer}>
                 {clicked ? (
                   <Icon
@@ -89,6 +93,7 @@ const DrCarousel = () => {
                 </View>
               </Card.Content>
             </Card>
+            </TouchableOpacity>
           ))}
         </View>
       ))}
@@ -96,55 +101,6 @@ const DrCarousel = () => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   card: {
-//     marginHorizontal: 10,
-//     marginBottom: 10,
-//     backgroundColor: "#fff",
-//     borderRadius: 5,
-//     width: "47%",
-//     height: 240,
-//   },
-//   cardImageContainer: {
-//     width: "100%",
-//     position: "relative",
-//     },
-//     cardImage: {
-//     height: "100%",
-//     },
-//     cardContent: {
-//     marginTop: 5,
-//     },
-//     row: {
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     paddingHorizontal: 10,
-//     },
-//     icons: {
-//     flexDirection: "row",
-//     alignItems: "center",
-//     marginRight: 10,
-//     },
-//     iconText: {
-//     marginLeft: 5,
-//     fontSize: 12,
-//     },
-//     heartIcon: {
-//     position: "absolute",
-//     top: 10,
-//     right: 10,
-//     zIndex: 10,
-//     },
-//     roundedBox: {
-//     backgroundColor: "#f7f7f7",
-//     borderRadius: 5,
-//     padding: 10,
-//     },
-//     ScrollView: {
-//     flex: 1,
-//     paddingHorizontal: 10,
-//     },
-//     });
 
 const styles = StyleSheet.create({
     card: {

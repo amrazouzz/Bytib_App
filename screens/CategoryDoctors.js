@@ -34,8 +34,14 @@ const CategoryDoctorsScreen = ({ route }) => {
         setDoctors(filteredDoctors);
       });
   };
+  const handleDoctorPress = (doctorId) => {
+    navigation.navigate('doctorProfile', { doctorId });
+
+  };
 
   const renderDoctorCard = ({ item }) => (
+    <TouchableOpacity key={item.id} onPress={() => handleDoctorPress(item.id)}>
+     
     <View style={styles.doctorCard}>
       <View style={styles.cardContent}>
         {item.photo? <>
@@ -69,6 +75,7 @@ const CategoryDoctorsScreen = ({ route }) => {
 </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 
   return (
