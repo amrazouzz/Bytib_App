@@ -6,7 +6,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { API_URL } from '../api/api';
+import { API_URL } from '../../api/api';
 
 const BookAppointmentScreen = () => {
   const navigation = useNavigation();
@@ -103,31 +103,35 @@ const BookAppointmentScreen = () => {
     const formattedTime = selectedTimeSlot.slot + ':00';
 
     const bookingDateTime = `${formattedDate} ${formattedTime}`;
-    console.log('bookingDateTime', bookingDateTime)
+    
 
-    navigation.navigate('bookSuccess')
-    // try {
-    //   const token = await AsyncStorage.getItem('AccessToken');
-    //   const response = await fetch(`${API_URL}/doctor/${doctorId}/book_appointment/`, {
-    //     method: 'POST',
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       booking_datetime: bookingDateTime,
-    //     }),
-    //   });
-
-    //   // Handle the response
-    //   if (response.ok) {
-    //     // Appointment booked successfully
-    //   } else {
-    //     // Handle error case
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const token = await AsyncStorage.getItem('AccessToken');
+      const response = await fetch(`${API_URL}/doctor/${doctorId}/book_appointment/`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          booking_datetime: bookingDateTime,
+        }),
+      });
+    
+      // Handle the response
+      if (response.ok) {
+        // Appointment booked successfully
+        navigation.navigate('bookSuccess');
+      } else {
+        // Handle error case
+        const errorResponse = await response.json();
+        console.log(errorResponse);
+        navigation.navigate('bookFail');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
   }; 
   return (
     <View style={{ flex: 1, backgroundColor: "#eaf5fa" }}>

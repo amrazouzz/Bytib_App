@@ -36,7 +36,7 @@ export default function App() {
   return (
     <NavigationContainer >
       <TailwindProvider>
-        
+         
         <Stack.Navigator >
         <Stack.Screen name="onBoarding" component={Onboarding} />
                 <Stack.Screen name="onBoardingTow" component={OnboardingTow} />

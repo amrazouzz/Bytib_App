@@ -1,32 +1,37 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Icons from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Header() {
   const navigation = useNavigation();
 
+  const handleBack = () => {
+    console.log('pressed')
+    navigation.goBack()
+  }
+
   return (
     <View style={styles.container}>
-      {/* Back Button */}
-      <View style={styles.backButton}>
-        <Pressable
-          android_ripple={{
-            borderless: true,
-            radius: 20,
-            color: "#acccd4",
-          }}
-          onPress={() => navigation.goBack()}
-        >
-          <Icons.ArrowLeftIcon
-            color="#ffffff"
-            className="h-7 w-7 text-gray-500"
-          />
-        </Pressable>
-      </View>
-      {/* Title */}
-      <Text className='font-extrabold' style={styles.title}>Doctor Profile</Text>
+    {/* Back Button */}
+    <View style={styles.backButton}>
+      <Pressable
+        android_ripple={{
+          borderless: true,
+          radius: 20,
+          color: "#acccd4",
+        }}
+        onPress={handleBack}
+      >
+        <Icons.ArrowLeftIcon
+          color="#ffffff"
+          style={styles.backIcon}
+        />
+      </Pressable>
     </View>
+    {/* Title */}
+    <Text style={styles.title}>Doctor Profile</Text>
+  </View>
   );
 }
 

@@ -66,15 +66,21 @@ const DrProfile = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
       <StatusBar barStyle="dark-content" backgroundColor="#eaf5fa" />
+      <Header />
       <View style={{ flex: 1 }}>
-        <Header />
+        
 
         <View style={styles.container}>
           <View style={styles.imageContainer}>
-            <Image
+            {doctor.photo ? <Image
               style={styles.doctorImage}
               source={{ uri: `${doctor.photo}` }}
-            />
+            /> : 
+            <Image
+            style={styles.doctorImage}
+            source={require('../assets/images/home/Image.png')}
+          />
+            }
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.name}>{doctor.name}</Text>
@@ -91,11 +97,11 @@ const DrProfile = () => {
 
           {/* body */}
           <View>
-            <Text>Map</Text>
+            <Text>Here goes the Map</Text>
           </View>
 
           <View>
-            <Text>About</Text>
+            <Text className='pt-10'>About section</Text>
           </View>
         </View>
       </View>
@@ -116,10 +122,10 @@ const styles = StyleSheet.create({
     bottom: 130,
   },
   imageContainer: {
-    width: 120,
-    height: 120,
+    width: 121,
+    height: 121,
     borderRadius: 75,
-    backgroundColor: "#fff",
+    backgroundColor: "#504DE5",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20,
@@ -128,6 +134,8 @@ const styles = StyleSheet.create({
     width: 118,
     height: 118,
     borderRadius: 60,
+    borderColor:'#fff',
+    borderWidth:3
   },
   infoContainer: {
     alignItems: "center",
