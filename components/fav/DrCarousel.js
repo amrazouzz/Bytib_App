@@ -3,10 +3,13 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import { Card, Title, Paragraph } from "react-native-paper";
 import { API_URL } from "../../api/api";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const DrCarousel = () => {
   const [doctors, setDoctors] = useState([]);
   const [clicked, setClicked] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     getDoctors();

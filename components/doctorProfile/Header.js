@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     height: 56,
     paddingHorizontal: 16,
+    direction:'ltr'
   },
   backButton: {
     backgroundColor: "#509ca4",
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
     position: 'absolute',
     left: 10,
+    direction:'ltr'
   },
   title: {
     fontSize: 20,

@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import i18n from './i18n';
+import { I18nManager } from 'react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -29,6 +29,9 @@ import BookAppointmentScreen from './screens/booking/BookAppointmentScreen';
 import BookingFaild from './screens/booking/BookingFaild';
 import BookingSuccess from './screens/booking/BookingSuccess';
 
+
+
+I18nManager.forceRTL(false);
 
 const Stack = createNativeStackNavigator();
 

@@ -16,14 +16,17 @@ const DoctorsCarousel = () => {
   }, []);
 
   const getDoctors = () => {
-    fetch(`${API_URL}/doctors`)
+    const params = new URLSearchParams();
+    params.append('top_rated', 'true');
+  
+    fetch(`${API_URL}/doctors?${params.toString()}`)
       .then((response) => response.json())
       .then((data) => {
         // Handle API response
         setDoctors(data.results);
       });
   };
-
+  
   const handleFav = () =>{
     setClicked(!clicked);
   }

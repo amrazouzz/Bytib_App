@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { API_URL } from '../../api/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getHeaderWithAuth } from '../../api/APIHeaders';
 
 const SidebarHeader = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -9,22 +10,20 @@ const SidebarHeader = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const token = await AsyncStorage.getItem('AccessToken');
+        const headers = await getHeaderWithAuth();
         const response = await fetch(`${API_URL}/my_info/`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Bytib-Lang': 'en',
-          },
+          headers: headers,
         });
         const data = await response.json();
         console.log(data); // Log the fetched data
-
+    
         // Update the state with the fetched user info
         setUserInfo(data);
       } catch (error) {
         console.error(error);
       }
     };
+    
 
     fetchUserInfo();
   }, []);

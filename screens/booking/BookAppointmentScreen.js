@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../../api/api';
+import { getHeaderWithAuth } from '../../api/APIHeaders';
 
 const BookAppointmentScreen = () => {
   const navigation = useNavigation();
@@ -31,11 +32,9 @@ const BookAppointmentScreen = () => {
 
   const fetchAvailabilityData = async () => {
     try {
-      const token = await AsyncStorage.getItem("AccessToken");
+      const headers = await getHeaderWithAuth();
       const response = await fetch(`${API_URL}/doctor/${doctorId}/availability`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: headers,
       });
       
       const data = await response.json();
@@ -106,13 +105,10 @@ const BookAppointmentScreen = () => {
     
 
     try {
-      const token = await AsyncStorage.getItem('AccessToken');
+      const headers = await getHeaderWithAuth();
       const response = await fetch(`${API_URL}/doctor/${doctorId}/book_appointment/`, {
         method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify({
           booking_datetime: bookingDateTime,
         }),
