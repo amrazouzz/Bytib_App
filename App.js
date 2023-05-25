@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import i18n from './i18n';
+import { I18nManager } from 'react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,7 +22,16 @@ import PasswordReset from './screens/auth/PasswordResset';
 import SuccessfulPassword from './screens/auth/SuccessfulPassword';
 import ChatScreen from './screens/ChatScreen';
 import FavScreen from './screens/FavoritesScreen';
+import SidebarScreen from './screens/SidebarScreen';
+import MapScreen from './screens/MapScreen';
+import DrProfile from './screens/DrProfile';
+import BookAppointmentScreen from './screens/booking/BookAppointmentScreen';
+import BookingFaild from './screens/booking/BookingFaild';
+import BookingSuccess from './screens/booking/BookingSuccess';
 
+
+
+I18nManager.forceRTL(false);
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +39,7 @@ export default function App() {
   return (
     <NavigationContainer >
       <TailwindProvider>
-        
+         
         <Stack.Navigator >
         <Stack.Screen name="onBoarding" component={Onboarding} />
                 <Stack.Screen name="onBoardingTow" component={OnboardingTow} />
@@ -43,8 +52,14 @@ export default function App() {
                 <Stack.Screen name="verificationScreen" component={VerificationScreen} />
                 <Stack.Screen name="signupScreen" component={SignupScreen} />
                 <Stack.Screen name="completeAccount" component={CompeleteAccountScreen} />
+                <Stack.Screen name='sidebar' component={SidebarScreen} />
                 <Stack.Screen name="home" component={HomeScreen} />
                 <Stack.Screen name="chat" component={ChatScreen} />
+                <Stack.Screen name="map" component={MapScreen} />
+                <Stack.Screen name="doctorProfile" component={DrProfile} />
+                <Stack.Screen name="bookAppointment" component={BookAppointmentScreen} />
+                <Stack.Screen name="bookSuccess" component={BookingSuccess} />
+                <Stack.Screen name="bookFail" component={BookingFaild} />
                 <Stack.Screen name="favScreen" component={FavScreen} />
                 <Stack.Screen name="articles" component={Articles} />
                 <Stack.Screen name="articleDetails" component={ArticleDetails} />

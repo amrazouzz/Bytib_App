@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { API_URL } from "../api/api";
 import { useNavigation } from "@react-navigation/native";
@@ -23,19 +23,26 @@ const CategoryDoctorsScreen = ({ route }) => {
     });
   }, []);
 
+  
   const fetchDoctors = (categoryId) => {
-    fetch(`${API_URL}/doctors`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Filter the doctors based on the category id
-        const filteredDoctors = data.results.filter(
-          (doctor) => doctor.categories.some((cat) => cat[0] === categoryId)
-        );
-        setDoctors(filteredDoctors);
-      });
+      const params = new URLSearchParams();
+      params.append('category_id', categoryId);
+    
+      fetch(`${API_URL}/doctors?${params.toString()}`)
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle API response
+          setDoctors(data.results);
+        });
+  };
+  const handleDoctorPress = (doctorId) => {
+    navigation.navigate('doctorProfile', { doctorId });
+
   };
 
   const renderDoctorCard = ({ item }) => (
+    <TouchableOpacity key={item.id} onPress={() => handleDoctorPress(item.id)}>
+     
     <View style={styles.doctorCard}>
       <View style={styles.cardContent}>
         {item.photo? <>
@@ -69,6 +76,7 @@ const CategoryDoctorsScreen = ({ route }) => {
 </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 
   return (

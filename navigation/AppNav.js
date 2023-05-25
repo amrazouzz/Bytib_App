@@ -21,6 +21,7 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryDoctorsScreen from '../screens/CategoryDoctors';
 import { ActivityIndicator } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Sidebar from '../components/sidebar/Sidebar';
 
 
 const Stack = createNativeStackNavigator();
@@ -51,7 +52,6 @@ const AppNav = () => {
                 <Stack.Screen name="verificationScreen" component={VerificationScreen} />
                 <Stack.Screen name="signupScreen" component={SignupScreen} />
                 <Stack.Screen name="completeAccount" component={CompeleteAccountScreen} />
-
                 <Stack.Screen name="home" component={HomeScreen} />
                 <Stack.Screen name="articles" component={Articles} />
                 <Stack.Screen name="articleDetails" component={ArticleDetails} />
