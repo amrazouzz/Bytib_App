@@ -14,6 +14,7 @@ import { API_URL } from "../../api/api";
 import CountryPicker from "react-native-country-picker-modal";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
+import { useTranslation } from "react-i18next";
 
 const SignupScreen = () => {
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ const SignupScreen = () => {
   const [showPassword, setShowPassword] = useState(false); // add state for showing password
   const [countryCode, setCountryCode] = useState("US");
   const [cities, setCities] = useState([]);
+  const {t} = useTranslation();
 
   const [show, setShow] = useState(false);
 
@@ -84,14 +86,14 @@ const SignupScreen = () => {
         <View style={styles.formContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Full Name"
+            placeholder={t('fullName')}
             placeholderTextColor="#b3c3cd"
             value={name}
             onChangeText={setName}
           />
           <TextInput
             style={styles.input}
-            placeholder="Email Or Mobile No"
+            placeholder={t('emailOrMob')}
             placeholderTextColor="#b3c3cd"
             value={email}
             onChangeText={setEmail}
@@ -99,7 +101,7 @@ const SignupScreen = () => {
           <View style={styles.passwordContainer}>
             <TextInput
               style={styles.passwordInput}
-              placeholder="Password"
+              placeholder={t('password')}
               placeholderTextColor="#b3c3cd"
               secureTextEntry={!showPassword} // use !showPassword to hide password
               value={password}
@@ -174,7 +176,7 @@ const SignupScreen = () => {
             selectedValue={city}
             onValueChange={(itemValue) => setCity(itemValue)}
           >
-            <Picker.Item label="Select city" value="" />
+            <Picker.Item label={t('selectCity')} value="" />
             {cities?.map((city) => (
               <Picker.Item key={city.id} label={city.name} value={city.name} />
             ))}
@@ -184,7 +186,7 @@ const SignupScreen = () => {
             style={styles.loginButton}
             onPress={handleSignupPress}
           >
-            <Text style={styles.buttonText}>Sign Up</Text>
+            <Text style={styles.buttonText}>{t('signup')}</Text>
           </TouchableOpacity>
         </View>
       </View>

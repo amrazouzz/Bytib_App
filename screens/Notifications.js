@@ -11,9 +11,11 @@ import {
   PhoneArrowDownLeftIcon,
   PhoneXMarkIcon,
 } from "react-native-heroicons/outline";
+import { useTranslation } from "react-i18next";
 
 const NotificationsScreen = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation()
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -37,7 +39,7 @@ const NotificationsScreen = () => {
               marginLeft: 20,
             }}
           >
-            <Text className="font-bold text-lg px-2 py-2">New</Text>
+            <Text className="font-bold text-lg px-2 py-2">{t('new')}</Text>
           </View>
           <View className="px-8 py-5">
             <Notification />
@@ -53,7 +55,7 @@ const NotificationsScreen = () => {
               marginLeft: 20,
             }}
           >
-            <Text className="font-bold text-lg px-2 py-2">Earlier</Text>
+            <Text className="font-bold text-lg px-2 py-2">{t('earlier')}</Text>
           </View>
           <View className="px-8 py-5">
             <Notification />
@@ -65,7 +67,7 @@ const NotificationsScreen = () => {
             {/* <CheckCircleIcon size={150} color={"#509ca4"} /> */}
 
             <Image source={require('../assets/images/home/notifications.png')} />
-            <Text style={styles.text}>No Notifications Yet!</Text>
+            <Text style={styles.text}>{t('noNotifications')}</Text>
           </View>
         </View>
       </ScrollView>

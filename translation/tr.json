@@ -1,5 +1,12 @@
 {
     "categoryTitle": "",
     "seeAll":"",
-    "topRated":""
+    "topRated":"",
+    "next":"",
+    "onBoardingDesc1":"",
+    "onBoardingDesc2":"",
+    "onBoardingDesc3":"",
+    "getStarted":"",
+    "login":"",
+    "signup":""
 }

@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState, useTransition } from "react";
 import {
   View,
   Text,
@@ -16,12 +16,15 @@ import { API_URL } from "../../api/api";
 import { AuthContext } from "../../context/AuthContext";
 import { user_login } from "../../api/userApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // add state for showing password
   const navigation = useNavigation();
+  const {t} = useTranslation();
+
   useEffect(() => {
     AsyncStorage.getItem("AccessToken")
       .then(loggedIn => {
@@ -41,9 +44,7 @@ const LoginScreen = () => {
 
   
       if(response.access){
-        console.log('logged in')
         AsyncStorage.setItem("AccessToken", response.access)
-        console.log('response.access' , response.access)
         navigation.navigate("home")
       }
   
@@ -76,7 +77,7 @@ const LoginScreen = () => {
           <Image style={{width:200, marginBottom:10}} source={require('../../assets/images/auth/login.png')} />
           <TextInput
             style={styles.input}
-            placeholder="Email Or Mobile No"
+            placeholder={t('emailOrMob')}
             placeholderTextColor="#b3c3cd"
             value={email}
             onChangeText={t => setEmail(t)}
@@ -84,7 +85,7 @@ const LoginScreen = () => {
           <View style={styles.passwordContainer}>
             <TextInput
               style={styles.passwordInput}
-              placeholder="Password"
+              placeholder={t('password')}
               placeholderTextColor="#b3c3cd"
               secureTextEntry={!showPassword} // use !showPassword to hide password
               value={password}
@@ -105,7 +106,7 @@ const LoginScreen = () => {
           </View>
           <TouchableOpacity style={styles.forgot} onPress={handleForgot}>
           <Text style={styles.forgot} className="text-sm text-red-500">
-            Forgot Password?
+            {t('forgotPassword')}
           </Text>
           </TouchableOpacity>
 
@@ -113,7 +114,7 @@ const LoginScreen = () => {
             style={styles.loginButton}
             onPress={handleLoginPress}
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>{t('login')}</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -5,9 +5,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/categories/Header";
 import { API_URL } from "../api/api";
 import { Card, Title, Paragraph } from 'react-native-paper';
+import { useTranslation } from "react-i18next";
 
 const CategoriesScreen = () => {
   const [categories, setCategories] = useState([]);
+  const {t} = useTranslation();
+
 
   useEffect(() => {
     getCategories();
@@ -59,7 +62,7 @@ const CategoriesScreen = () => {
                       {category.name}
                     </Title>
                     <Paragraph className="text-center font-light text-sm">
-                      {category.doctors_count} Doctors
+                      {category.doctors_count} {t('doctors')}
                     </Paragraph>
                   </View>
                 </Card.Content>

@@ -10,9 +10,11 @@ import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const Auth = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const handleBackPress = () => {
     navigation.goBack();
@@ -52,11 +54,11 @@ const Auth = () => {
           <Header />
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleLoginPress}>
-              <Text style={styles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>{t('login')}</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: "column" }}>
               <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleSignUpPress}>
-                <Text style={styles.buttonText}>Sign Up</Text>
+                <Text style={styles.buttonText}>{t('signup')}</Text>
               </TouchableOpacity>
             </View>
           </View>

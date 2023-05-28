@@ -28,9 +28,11 @@ import DrProfile from './screens/DrProfile';
 import BookAppointmentScreen from './screens/booking/BookAppointmentScreen';
 import BookingFaild from './screens/booking/BookingFaild';
 import BookingSuccess from './screens/booking/BookingSuccess';
+import MyProfile from './screens/profile/MyProfile';
+import EditProfile from './screens/profile/EditProfile';
 
 
-
+// I18nManager.allowRTL(true)
 I18nManager.forceRTL(false);
 
 const Stack = createNativeStackNavigator();
@@ -66,6 +68,8 @@ export default function App() {
                 <Stack.Screen name="notifications" component={NotificationsScreen} />
                 <Stack.Screen name="categories" component={CategoriesScreen} />
                 <Stack.Screen name="categoryDoctors" component={CategoryDoctorsScreen} />
+                <Stack.Screen name="myProfile" component={MyProfile} />
+                <Stack.Screen name="editMyProfile" component={EditProfile} />
 
         </Stack.Navigator>
       

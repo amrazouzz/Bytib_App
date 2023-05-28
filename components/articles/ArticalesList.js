@@ -31,8 +31,8 @@ const navigation = useNavigation();
   data={articles}
   keyExtractor={(item) => item.id.toString()}
   renderItem={({ item }) => (
-    <TouchableOpacity onPress={() => handleArticlePress(item)}>
-    <View style={{ flexDirection: 'row', padding: 16 }}>
+    <TouchableOpacity onPress={() => handleArticlePress(item)} >
+    <View style={{ flexDirection: 'row', padding: 16, }}>
       <View style={{ marginRight: 16 }}>
         {item.banner_image ? (
           <Image source={{ uri: item.banner_image }} style={{ width: 70, height: 70, borderRadius: 10 }} />
@@ -47,7 +47,7 @@ const navigation = useNavigation();
         )}
       </View>
       <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>{item.subject}</Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8, }}>{item.subject}</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 }}>
           <Text style={{ fontSize: 16, color: 'gray' }}>{item.doctor_name}</Text>
           <Text style={{ fontSize: 16, color: 'gray' }}>{new Date(item.publish_date).toLocaleDateString()}</Text>

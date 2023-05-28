@@ -1,5 +1,12 @@
 {
     "categoryTitle": "التخصصات",
     "seeAll":"المزيد",
-    "topRated":"الأعلى تقييم"
+    "topRated":"الأعلى تقييم",
+    "next":"التالي",
+    "onBoardingDesc1":"وصف",
+    "onBoardingDesc2":"وصف",
+    "onBoardingDesc3":"وصف",
+    "getStarted":"ابدأ",
+    "login":"تسجيل دخول",
+    "signup":"إنشاء حساب"
 }

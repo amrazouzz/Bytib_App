@@ -5,9 +5,11 @@ import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../context/AuthContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const MapHeader = () => {
     const navigation = useNavigation();
+    const {t,i18n} = useTranslation();
 
 
 
@@ -56,7 +58,7 @@ const MapHeader = () => {
                 />
               </TouchableOpacity>
               <TextInput
-                placeholder="Search"
+                placeholder={t('search')}
                 placeholderTextColor="white"
                 style={{
                   marginLeft: 10,

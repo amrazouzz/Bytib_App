@@ -13,10 +13,12 @@ import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
+import { useTranslation } from "react-i18next";
 
 const ForgotScreen = () => {
   const [email, setEmail] = useState("");
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const handleForgotPress = async () => {
     navigation.navigate('verificationScreen')
@@ -40,12 +42,12 @@ const ForgotScreen = () => {
         <View style={styles.formContainer}>
         <Image style={{width:200, marginBottom:10}} source={require('../../assets/images/auth/forgot.png')} />
           <View>
-            <Text className='text-xl font-bold' style={{color:'#509ca4',    fontWeight:'900' }}>FORGOT PASSWORD</Text>
-            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>Discription</Text>
+            <Text className='text-xl font-bold ' style={{color:'#509ca4',    fontWeight:'900' }}>{t('forgotPassword')}</Text>
+            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>{t('forgotPasswordDesc')}</Text>
         </View>
           <TextInput
             style={styles.input}
-            placeholder="Email Or Mobile No"
+            placeholder={t('emailOrMob')}
             placeholderTextColor="#b3c3cd"
             value={email}
             onChangeText={setEmail}
@@ -55,7 +57,7 @@ const ForgotScreen = () => {
             style={styles.loginButton}
             onPress={handleForgotPress}
           >
-            <Text style={styles.buttonText}>SEND</Text>
+            <Text style={styles.buttonText}>{t('send')}</Text>
           </TouchableOpacity>
         </View>
       </View>

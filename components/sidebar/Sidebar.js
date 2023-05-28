@@ -5,10 +5,12 @@ import { TouchableOpacity } from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 
 const Sidebar = () => {
     const navigation = useNavigation()
+    const {t} = useTranslation()
 
     const handleLogoutPress = () => {
         console.log('loggedOut')
@@ -25,73 +27,73 @@ const Sidebar = () => {
         
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer} ><Image style={styles.LinkIcon}  source={require('../../assets/images/sidebar/Profile.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>My Profile</Link>
+            <Link style={styles.LinkText} to='/myProfile'>{t('sbProfile')}</Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-7 w-7' source={require('../../assets/images/sidebar/30-appointment.png')} />
                 </View>
-            <Link style={styles.LinkText} to='/home'>My Appointments</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbAppointments')}</Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Paper.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>My Reports</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbReports')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-8' source={require('../../assets/images/sidebar/family.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Family Member Profile</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbFamily')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/location.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Pharamcies Open</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbPharmacies')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Message.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Inbox</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbInbox')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Setting.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Settings</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbSettings')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/about.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>About App</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbAbout')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Shape.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Share App</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbShare')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Star.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Rate App</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbShare')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Calling.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Contact Us</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbContact')}</Link>
         </View>
 
         <Pressable onPress={handleLogoutPress}>
         <View style={styles.Link} >
             <View style={styles.LinkIconContainer} >
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Logout.png')} /></View>
-            <Text style={styles.LinkText}>Log Out</Text>
+            <Text style={styles.LinkText}>{t('sbLogout')}</Text>
         </View>
         </Pressable>
 

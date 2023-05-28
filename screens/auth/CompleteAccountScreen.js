@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
 import { Picker } from "@react-native-picker/picker";
+import { useTranslation } from "react-i18next";
 
 const CompeleteAccountScreen = () => {
     const [gender, setGender] = useState('')
@@ -20,6 +21,7 @@ const CompeleteAccountScreen = () => {
     const [weight, setWeight] = useState('')
     const [disears, setDisears] = useState('')
     const [other, setOther] = useState('')
+    const {t} = useTranslation();
     
     const navigation = useNavigation();
 
@@ -47,37 +49,37 @@ const CompeleteAccountScreen = () => {
             selectedValue={gender}
             onValueChange={(itemValue) => setGender(itemValue)}
           >
-            <Picker.Item label="Gender" value="" />
+            <Picker.Item label={t('gender')} value="" />
             
-              <Picker.Item key={0} label={'Male'} value={'M'} />
-              <Picker.Item key={1} label={'Female'} value={'F'} />
+              <Picker.Item key={0} label={t('male')} value={'M'} />
+              <Picker.Item key={1} label={t('female')} value={'F'} />
             
           </Picker>
 
           <TextInput
             style={styles.input}
-            placeholder="Height"
+            placeholder={t('height')}
             placeholderTextColor="#b3c3cd"
             value={height}
             onChangeText={setHeight}
           />
           <TextInput
             style={styles.input}
-            placeholder="Weight"
+            placeholder={t('weight')}
             placeholderTextColor="#b3c3cd"
             value={weight}
             onChangeText={setWeight}
           />
           <TextInput
             style={styles.input}
-            placeholder="Chronic Diseares"
+            placeholder={t('diseares')}
             placeholderTextColor="#b3c3cd"
             value={disears}
             onChangeText={setDisears}
           />
           <TextInput
             style={styles.input}
-            placeholder="Other"
+            placeholder={t('other')}
             placeholderTextColor="#b3c3cd"
             value={other}
             onChangeText={setOther}
@@ -87,7 +89,7 @@ const CompeleteAccountScreen = () => {
             style={styles.loginButton}
             onPress={handleCompletePress}
           >
-            <Text style={styles.buttonText}>Save</Text>
+            <Text style={styles.buttonText}>{t('save')}</Text>
           </TouchableOpacity>
         </View>
       </View>

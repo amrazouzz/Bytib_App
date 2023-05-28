@@ -1,10 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useLayoutEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const OnboardingScreen = ({ imageSource, title, description, onPress }) => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
   useEffect(() => {
     AsyncStorage.getItem("AccessToken")
       .then(loggedIn => {
@@ -23,7 +25,7 @@ const OnboardingScreen = ({ imageSource, title, description, onPress }) => {
         <Text style={styles.title}>{title}</Text>
         <Pagination numberOfDots={3} activeDotIndex={1} />
         <TouchableOpacity style={styles.button} onPress={onPress}>
-          <Text style={styles.buttonText}>Next</Text>
+          <Text style={styles.buttonText}>{t('next')}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -55,6 +57,7 @@ const Pagination = ({ numberOfDots, activeDotIndex }) => {
 
 const OnboardingTow = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const handlePress = () => {
     navigation.navigate('onBoardingThree')
@@ -68,7 +71,7 @@ const OnboardingTow = () => {
     <View style={styles.container}>
       <OnboardingScreen
         imageSource={require('../../assets/images/onBoarding/onboarding1.png')}
-        title="Description of Screen 2"
+        title={t('onBoardingDesc2')}
         onPress={handlePress}
       />
     </View>

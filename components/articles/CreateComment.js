@@ -1,9 +1,12 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import * as Icons from 'react-native-heroicons/outline';
 
 const CreateComment = () => {
   const [comment, setComment] = useState('');
+  const {t} = useTranslation();
 
   const handleCommentChange = (text) => {
     setComment(text);
@@ -18,7 +21,7 @@ const CreateComment = () => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Leave a comment"
+          placeholder={t('leaveComment')}
           value={comment}
           onChangeText={handleCommentChange}
 

@@ -10,9 +10,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Header from "../components/chat/Header";
 import OnlineDrsCarousel from "../components/chat/OnlineDrsCarousel";
 import ChatsCarousel from "../components/chat/ChatsCarousel";
+import { useTranslation } from "react-i18next";
 
 const ChatScreen = () => {
   const navigation = useNavigation();
+  const {t,i18n} = useTranslation();
+
   useEffect(() => {
    let loggedIn = AsyncStorage.getItem('AccessToken')
    if (!loggedIn) {
@@ -38,7 +41,7 @@ const ChatScreen = () => {
 
             {/* Online Drs */}
           <View className="px-5">
-            <Text className='font-extrabold text-xl mb-4 mt-3'>Online Doctors</Text>
+            <Text className='font-extrabold text-xl mb-4 mt-3'>{t('onlineDr')}</Text>
             <OnlineDrsCarousel />
           </View>
 

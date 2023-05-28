@@ -13,11 +13,13 @@ import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
+import { useTranslation } from "react-i18next";
 
 const PasswordReset = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword ] = useState("");
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const handleConfirmPress = async () => {
     navigation.navigate('successfulPassword')
@@ -40,19 +42,19 @@ const PasswordReset = () => {
 
         <View style={styles.formContainer} className="mb-4">
           <View>
-            <Text className='text-xl font-bold' style={{color:'#509ca4',    fontWeight:'900' }}>PASSWORD RESET</Text>
-            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>Discription</Text>
+            <Text className='text-xl font-bold' style={{color:'#509ca4',    fontWeight:'900' }}>{t('passwordResetTitle')}</Text>
+            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>{t('passwordResetDesc')}</Text>
         </View>
           <TextInput
             style={styles.input}
-            placeholder="Password"
+            placeholder={t('password')}
             placeholderTextColor="#b3c3cd"
             value={password}
             onChangeText={setPassword}
           />
           <TextInput
             style={styles.input}
-            placeholder="Re Password"
+            placeholder= {t('rePassword')}
             placeholderTextColor="#b3c3cd"
             value={confirmPassword}
             onChangeText={setConfirmPassword}
@@ -62,13 +64,14 @@ const PasswordReset = () => {
             style={styles.loginButton}
             onPress={handleConfirmPress}
           >
-            <Text style={styles.buttonText}>CONFIRM</Text>
+            <Text style={styles.buttonText}>{t('confirm')}</Text>
           </TouchableOpacity>
         </View>
       </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#eaf5fa",
