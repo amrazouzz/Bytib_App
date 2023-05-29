@@ -9,7 +9,7 @@ import { ScrollView } from 'react-native';
 import * as Icons from 'react-native-heroicons/outline'
 import { API_URL } from '../../api/api';
 import { TextInput } from 'react-native';
-import { getHeaders } from '../../api/APIHeaders';
+import { getHeaderWithAuth, getHeaders } from '../../api/APIHeaders';
 import { Picker } from '@react-native-picker/picker';
 import CountryPicker from "react-native-country-picker-modal";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -23,30 +23,15 @@ const EditProfile = () => {
     const [city, setCity] = useState();
     const [birth, setBirth] = useState(new Date());
     const [phone, setPhone] = useState("");
-    const [countryCode, setCountryCode] = useState("US");
+    const [countryCode, setCountryCode] = useState("IQ");
     const [show, setShow] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
 
 
 
     useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-              const headers = await getHeaderWithAuth();
-              const response = await fetch(`${API_URL}/my_info/`, {
-                headers: headers,
-              });
-              const data = await response.json();
-              console.log(data.date_of_birth); // Log the fetched data
-          
-              // Update the state with the fetched user info
-              setUserInfo(data);
-              setBirth(userInfo?.date_of_birth)
-            } catch (error) {
-                console.error(error);
-              }
-            };
-
-            console.log('userInfo.date' , userInfo?.date_of_birth)
+      fetchUserInfo()
 
 
         async function fetchCities() {
@@ -58,6 +43,41 @@ const EditProfile = () => {
       }, []);
 
     
+
+
+      const fetchUserInfo = async () => {
+        try {
+          const headers = await getHeaderWithAuth();
+          const response = await fetch(`${API_URL}/my_info/`, {
+            headers: headers,
+          });
+          const data = await response.json();
+      
+          setBirth(new Date(data.date_of_birth));
+          setCity(data.city_id);
+          const phoneNumber = data.tel_number.replace(/^[+][0-9]{1,3}/, '');
+      
+          setPhone(phoneNumber);
+          setName(data.full_name);
+          setEmail(data.email);
+          
+          setFormData((prevData) => ({
+            ...prevData,
+            city_id: data.city_id,
+            city_name: '', // Set the appropriate value here
+            country_name: '', // Set the appropriate value here
+            date_of_birth: data.date_of_birth,
+            email: data.email,
+            full_name: data.full_name,
+            gender: '', // Set the appropriate value here
+            tel_number: phoneNumber,
+          }));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      
+      
 
     const [formData, setFormData] = useState({
         city_id: 1,
@@ -93,6 +113,8 @@ const EditProfile = () => {
           [name]: value,
         }));
       };
+
+      
       const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(false);
@@ -103,29 +125,31 @@ const EditProfile = () => {
         setShow(true);
       };
 
-      const handleSubmit = () => {
+      const handleSubmit = async () => {
         const phoneNumber = phone.replace(/\s/g, ""); // remove spaces from the phone number
-    
+      
         const formDataWithPhone = {
           ...formData,
           tel_number: phoneNumber,
         };
-    
-        const headers = getHeaders();
-        fetch(`${API_URL}/my_info/`, {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify(formDataWithPhone),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // Handle success or error response
-            console.log(data);
-          })
-          .catch((error) => {
-            console.error(error);
+      
+        try {
+          const headers = await getHeaderWithAuth();
+          const response = await fetch(`${API_URL}/my_info/`, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(formDataWithPhone),
           });
+          const data = await response.json();
+          // Handle success response
+          navigation.navigate('home')
+          console.log('success',data);
+        } catch (error) {
+          console.error(error);
+          // Handle error response
+        }
       };
+      
 
 
     useLayoutEffect(() => {
@@ -162,8 +186,8 @@ const EditProfile = () => {
             {/* inputfield */}
             <TextInput
                 style={styles.input}
-                value={formData.full_name}
-                onChangeText={(value) => handleInputChange('full_name', value)}
+                value={formData.email}
+                onChangeText={(value) => handleInputChange('email', value)}
               />
         </View>
         <View style={styles.info}>
@@ -199,12 +223,13 @@ const EditProfile = () => {
             {/* date of birth */}
             <View style={{ flexDirection: "row", alignItems: "center" }}>
             <TextInput
-              style={styles.input}
-              placeholder="Select Birth Date"
-              value={birth.toDateString()}
-              onFocus={showDatePicker}
-              editable={true}
-            />
+  style={styles.input}
+  placeholder={t('selectBD')}
+  value={birth.toDateString()}
+  onFocus={showDatePicker}
+  editable={true}
+/>
+
             {show && (
               <DateTimePicker
                 testID="dateTimePicker"
@@ -225,14 +250,19 @@ const EditProfile = () => {
 
 
         <View style={styles.info}>
-            <Text style={styles.infoText}>{t('gender')}</Text>
-            {/* gender */}
-            <TextInput
-                style={styles.input}
-                value={formData.full_name}
-                onChangeText={(value) => handleInputChange('full_name', value)}
-              />
-        </View>
+  <Text style={styles.infoText}>{t('gender')}</Text>
+  {/* gender */}
+  <Picker
+    style={styles.input}
+    selectedValue={formData.gender}
+    onValueChange={(value) => handleInputChange('gender', value)}
+  >
+    <Picker.Item label={t('male')} value="M" />
+    <Picker.Item label={t('female')} value="F" />
+  </Picker>
+</View>
+
+
         <View style={styles.info}>
             <Text style={styles.infoText}>{t('city')}</Text>
             {/* inputfield */}
@@ -253,7 +283,7 @@ const EditProfile = () => {
 
             
         </View>
-        <Text style={styles.btn}>{t('save')}</Text>
+        <Text style={styles.btn} onPress={handleSubmit}>{t('save')}</Text>
 
         </View>
         </ScrollView>

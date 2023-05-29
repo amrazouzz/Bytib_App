@@ -92,7 +92,9 @@
     "mobile": "Mobile",
     "name": "Name",
     "dob":"DOB",
-    "city": "City"
+    "city": "City",
+
+    "selectBD": "Select Birth Date"
 
 
 
