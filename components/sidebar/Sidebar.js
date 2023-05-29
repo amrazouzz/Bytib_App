@@ -68,7 +68,7 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/about.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbAbout')}</Link>
+            <Link style={styles.LinkText} to='/about'>{t('sbAbout')}</Link>
         </View>
 
         <View style={styles.Link}>

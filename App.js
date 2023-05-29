@@ -30,6 +30,7 @@ import BookingFaild from './screens/booking/BookingFaild';
 import BookingSuccess from './screens/booking/BookingSuccess';
 import MyProfile from './screens/profile/MyProfile';
 import EditProfile from './screens/profile/EditProfile';
+import About from './screens/About';
 
 
 // I18nManager.allowRTL(true)
@@ -70,6 +71,7 @@ export default function App() {
                 <Stack.Screen name="categoryDoctors" component={CategoryDoctorsScreen} />
                 <Stack.Screen name="myProfile" component={MyProfile} />
                 <Stack.Screen name="editMyProfile" component={EditProfile} />
+                <Stack.Screen name="about" component={About} />
 
         </Stack.Navigator>
       
