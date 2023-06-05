@@ -6,6 +6,8 @@ import { Link, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import { Share } from 'react-native';
 
 
 const Sidebar = () => {
@@ -19,6 +21,36 @@ const Sidebar = () => {
         navigation.navigate('onBoarding');
       }
 
+
+
+      const handleShare = async () => {
+        try {
+          const shareOptions = {
+            title: `${t('shareTitle')}`,
+            message:`${t('shareMessage')}`
+          };
+          const result = await Share.share(shareOptions);
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+              // Shared with activity type of result.activityType
+              console.log('Shared with activity type of result.activityType');
+            } else {
+              // Shared
+              console.log('Shared');
+            }
+          } else if (result.action === Share.dismissedAction) {
+            // Dismissed the share dialog
+            console.log('Dismissed the share dialog');
+          }
+        } catch (error) {
+          console.log('shareErr', error);
+        }
+    };      
+      
+      
+      
+      
+      
     return (
     <View style={styles.container}>
     {/* Drawer */}
@@ -33,7 +65,7 @@ const Sidebar = () => {
             <View style={styles.LinkIconContainer}>
                 <Image className='h-7 w-7' source={require('../../assets/images/sidebar/30-appointment.png')} />
                 </View>
-            <Link style={styles.LinkText} to='/home'>{t('sbAppointments')}</Link>
+            <Link style={styles.LinkText} to='/labScreen'>{t('sbAppointments')}</Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
@@ -50,7 +82,7 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/location.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbPharmacies')}</Link>
+            <Link style={styles.LinkText} to='/pharmacyScreen'>{t('sbPharmacies')}</Link>
         </View>
 
         <View style={styles.Link}>
@@ -71,17 +103,20 @@ const Sidebar = () => {
             <Link style={styles.LinkText} to='/about'>{t('sbAbout')}</Link>
         </View>
 
+        <Pressable onPress={handleShare}>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Shape.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbShare')}</Link>
+            <Text style={styles.LinkText} >{t('sbShare')}</Text>
         </View>
+        </Pressable>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Star.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbShare')}</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbRate')}</Link>
         </View>
+
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>

@@ -99,7 +99,16 @@
     "aboutHeader":"ABOUT APP",
     "aboutText":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et."
 
+    ,"shareTitle": "here gose the title",
+    "shareMessage" :"here goes the share message I prefer using the app link"
 
-
+    ,"medicationSearch": "SEARCH FOR MEDICATION",
+    "searchMedicationHeader": "SEARCH FOR MEDICATION",
+    "searchMedication": "Medicament Name",
+    "launchCamera": "Launch Camera For Image",
+    "chooseImg" : "Choose Image",
+    "sending": "Sending",
+    "myOrder": "MY ORDER",
+    "medicationSuccessText": "Your request has been sent to the five nearest pharmacies, you can track the request from the My order list"
 
 }

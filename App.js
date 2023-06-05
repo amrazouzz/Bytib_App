@@ -31,6 +31,10 @@ import BookingSuccess from './screens/booking/BookingSuccess';
 import MyProfile from './screens/profile/MyProfile';
 import EditProfile from './screens/profile/EditProfile';
 import About from './screens/About';
+import MedicationScreen from './screens/medication/MedicationScreen';
+import MedicationSuccessScreen from './screens/medication/MedicationSuccess';
+import LabScreen from './screens/laboratory/LabScreen';
+import PharmacyScreen from './screens/pharmacy/PharmacyScreen';
 
 
 // I18nManager.allowRTL(true)
@@ -72,6 +76,10 @@ export default function App() {
                 <Stack.Screen name="myProfile" component={MyProfile} />
                 <Stack.Screen name="editMyProfile" component={EditProfile} />
                 <Stack.Screen name="about" component={About} />
+                <Stack.Screen name="medicationScreen" component={MedicationScreen} />
+                <Stack.Screen name="medicationSuccess" component={MedicationSuccessScreen} />
+                <Stack.Screen name="labScreen" component={LabScreen} />
+                <Stack.Screen name="pharmacyScreen" component={PharmacyScreen} />
 
         </Stack.Navigator>
       

@@ -7,9 +7,12 @@ import NavBar from "../components/home/NavBar";
 import { StyleSheet } from "react-native";
 import MapHeader from "../components/map/MapHeader";
 import Map from "../components/map/Map";
+import { useTranslation } from "react-i18next";
+import { width } from "deprecated-react-native-prop-types/DeprecatedImagePropType";
 
 const MapScreen = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
   useEffect(() => {
     let loggedIn = AsyncStorage.getItem("AccessToken");
     if (!loggedIn) {
@@ -30,6 +33,10 @@ const MapScreen = () => {
         <Map />
       </View>
       
+      <View style={styles.btnContainer}>
+      <Text onPress={()=> navigation.navigate('medicationScreen')} style={styles.btn}>{t('medicationSearch')}</Text>
+      </View>
+
       <NavBar />
     </SafeAreaView>
   );
@@ -38,6 +45,29 @@ const MapScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
   },
+  btnContainer:{
+    flex: 1,
+    backgroundColor: "#fff"
+    ,width: '100%',
+    position: "absolute",
+    alignSelf:'center',
+    justifyContent:'center',
+    bottom: 100,
+  },
+  btn: {
+    backgroundColor:'#528DA7',
+    paddingHorizontal: 50,
+    paddingVertical: 15
+    , marginVertical: 10
+    , width:'80%',
+    alignSelf: 'center',
+    textAlign:'center',
+    color:'#fff',
+    borderRadius:5,
+    fontWeight:'700',
+    fontSize:16
+  }
 });
 export default MapScreen;
