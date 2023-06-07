@@ -111,4 +111,7 @@
     "myOrder": "MY ORDER",
     "medicationSuccessText": "Your request has been sent to the five nearest pharmacies, you can track the request from the My order list"
 
+    ,"passwordMatch": "Please make sure the passwords match",
+    "passwordLess": "Your Password should be more than 6 letters",
+    "resetSuccessTitle": "SUCCESSFUL"
 }

@@ -65,7 +65,7 @@ const Sidebar = () => {
             <View style={styles.LinkIconContainer}>
                 <Image className='h-7 w-7' source={require('../../assets/images/sidebar/30-appointment.png')} />
                 </View>
-            <Link style={styles.LinkText} to='/labScreen'>{t('sbAppointments')}</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbAppointments')}</Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
@@ -82,7 +82,7 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/location.png')} /></View>
-            <Link style={styles.LinkText} to='/pharmacyScreen'>{t('sbPharmacies')}</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbPharmacies')}</Link>
         </View>
 
         <View style={styles.Link}>

@@ -13,22 +13,70 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
 import { useTranslation } from "react-i18next";
+import axios from 'axios';
+import { getHeaders } from "../../api/APIHeaders";
 
-const VerificationScreen = () => {
+
+const VerificationScreen = ({ route }) => {
   const [verification, setVerification] = useState("");
   const [timer, setTimer] = useState(60);
   const navigation = useNavigation();
   const {t} = useTranslation();
+  const [email, setEmail] = useState("");
+
+
+
 
   const handleForgotPress = async () => {
-    navigation.navigate("passwordReset");
+try {
+  const headers = await getHeaders();
+  const response = await fetch(`${API_URL}/password_reset/`,{
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      'email-tel':email,
+      'code': verification
+    })
+  } );
+
+  const data = await response.json();
+
+
+  if (response.ok) {
+    // Appointment booked successfully
+    navigation.navigate('passwordReset', { email: email });
+  } else {
+    // Handle error case
+    const errorResponse = await response.json();
+    console.log(errorResponse);
+    
+  }
+
+} catch (error) {
+  console.log('catch error: ', error)
+}
+
   };
+  
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
+
+
+
+  useEffect(() => {
+    if (route.params && route.params.email) {
+      setEmail(route.params.email); 
+    }
+  }, [route.params]);
+
+
+
 
   useEffect(() => {
     if (timer > 0) {

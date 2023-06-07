@@ -11,18 +11,45 @@ import {
 } from "react-native";
 import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
-import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
 import { useTranslation } from "react-i18next";
+import { getHeaders } from "../../api/APIHeaders";
+import axios from "axios";
+
 
 const ForgotScreen = () => {
   const [email, setEmail] = useState("");
   const navigation = useNavigation();
   const {t} = useTranslation();
 
+
+
   const handleForgotPress = async () => {
-    navigation.navigate('verificationScreen')
+    try {
+      const headers = await getHeaders();
+      const mail = email;
+      const url = `${API_URL}/password_reset/?email-tel=${encodeURIComponent(mail)}`;
+
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: headers,
+      });
+  
+      const data = await response.json();
+  
+  
+      if (response.ok) {
+        navigation.navigate('verificationScreen', { email });
+      } else {
+        console.log('data error', data.error);
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
   };
+  
+  
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -64,6 +91,9 @@ const ForgotScreen = () => {
     </View>
   );
 };
+
+
+
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#eaf5fa",
