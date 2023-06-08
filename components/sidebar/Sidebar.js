@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native';
@@ -15,11 +15,31 @@ const Sidebar = () => {
     const {t} = useTranslation()
 
     const handleLogoutPress = () => {
-        console.log('loggedOut')
-        AsyncStorage.removeItem('AccessToken');
-        AsyncStorage.removeItem('userInfo');
-        navigation.navigate('onBoarding');
-      }
+        Alert.alert(
+          t('logoutAlertHeader'),
+          t('logoutAlertQuestion'),
+          [
+            {
+              text: t('cancel'),
+              style: 'cancel',
+            },
+            {
+              text: t('logout'),
+              onPress: () => {
+                AsyncStorage.removeItem('AccessToken');
+                AsyncStorage.removeItem('userInfo');
+                navigation.navigate('onBoarding');
+              },
+              style: 'destructive',
+            },
+          ],
+        );
+      };
+
+
+      const handleSettingsPress = () => {
+        navigation.navigate('settingsScreen');
+      };
 
 
 
@@ -63,7 +83,8 @@ const Sidebar = () => {
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-7 w-7' source={require('../../assets/images/sidebar/30-appointment.png')} />
+            <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/30-appointment.png')} />
+
                 </View>
             <Link style={styles.LinkText} to='/home'>{t('sbAppointments')}</Link>
         </View>
@@ -75,7 +96,7 @@ const Sidebar = () => {
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-8' source={require('../../assets/images/sidebar/family.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/family.png')} /></View>
             <Link style={styles.LinkText} to='/home'>{t('sbFamily')}</Link>
         </View>
 
@@ -87,47 +108,49 @@ const Sidebar = () => {
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Message.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Message.png')} /></View>
             <Link style={styles.LinkText} to='/home'>{t('sbInbox')}</Link>
         </View>
 
+        <TouchableOpacity onPress={handleSettingsPress}>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Setting.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbSettings')}</Link>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Setting.png')} /></View>
+            <Text style={styles.LinkText} >{t('sbSettings')}</Text>
         </View>
+        </TouchableOpacity>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/about.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/about.png')} /></View>
             <Link style={styles.LinkText} to='/about'>{t('sbAbout')}</Link>
         </View>
 
         <Pressable onPress={handleShare}>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Shape.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Shape.png')} /></View>
             <Text style={styles.LinkText} >{t('sbShare')}</Text>
         </View>
         </Pressable>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Star.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Star.png')} /></View>
             <Link style={styles.LinkText} to='/home'>{t('sbRate')}</Link>
         </View>
 
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Calling.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Calling.png')} /></View>
             <Link style={styles.LinkText} to='/home'>{t('sbContact')}</Link>
         </View>
 
         <Pressable onPress={handleLogoutPress}>
         <View style={styles.Link} >
             <View style={styles.LinkIconContainer} >
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Logout.png')} /></View>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Logout.png')} /></View>
             <Text style={styles.LinkText}>{t('sbLogout')}</Text>
         </View>
         </Pressable>
@@ -163,13 +186,15 @@ Link:{
     marginBottom:20
 },
 LinkIconContainer:{
-    width:20,
-    height:25,
-    marginRight:15
+    width:25,
+    height:30,
+    marginRight:15,
+    
 },
 LinkIcon:{
-    width:'115%',
-    height:'115%'
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
 },
 LinkText:{
     paddingHorizontal:15,

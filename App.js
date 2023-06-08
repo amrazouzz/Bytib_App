@@ -35,14 +35,18 @@ import MedicationScreen from './screens/medication/MedicationScreen';
 import MedicationSuccessScreen from './screens/medication/MedicationSuccess';
 import LabScreen from './screens/laboratory/LabScreen';
 import PharmacyScreen from './screens/pharmacy/PharmacyScreen';
+import SettingsScreen from './screens/settings/SettingsScreen';
 
 
 // I18nManager.allowRTL(true)
-I18nManager.forceRTL(false);
+
+
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+
   return (
     <NavigationContainer >
       <TailwindProvider>
@@ -80,6 +84,7 @@ export default function App() {
                 <Stack.Screen name="medicationSuccess" component={MedicationSuccessScreen} />
                 <Stack.Screen name="labScreen" component={LabScreen} />
                 <Stack.Screen name="pharmacyScreen" component={PharmacyScreen} />
+                <Stack.Screen name="settingsScreen" component={SettingsScreen} />
 
         </Stack.Navigator>
       

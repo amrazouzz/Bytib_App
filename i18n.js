@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 import en from './translation/en.json'
 import tr from './translation/tr.json'
 import ar from './translation/ar.json'
+import { I18nManager } from "react-native";
 
 
 
@@ -22,7 +23,7 @@ const resources = {
       .use(initReactI18next) 
       .init({
       resources,
-      lng: "en", 
+      lng: I18nManager.isRTL ?  'ar' : 'en', 
       interpolation: {
         escapeValue: false 
       },

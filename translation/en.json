@@ -113,5 +113,24 @@
 
     ,"passwordMatch": "Please make sure the passwords match",
     "passwordLess": "Your Password should be more than 6 letters",
-    "resetSuccessTitle": "SUCCESSFUL"
+    "resetSuccessTitle": "SUCCESSFUL",
+
+    "logoutAlertHeader": "Confirm Logout",
+    "logoutAlertQuestion": "Are you sure you want to logout?",
+    "cancel": "CANCEL",
+
+
+    "settingsH": "SETTINGS",
+    "changePassword": "Change Password",
+    "allowVoice": "Allow Voice Chat",
+    "allowVideo": "Allow Call Video",
+    "allowCall": "Allow Call Chat",
+    "notifications": "Notifications",
+    "language": "Language",
+
+    "changeLanguage": "Change Language",
+    "english":"English",
+    "arabic":"Arabic",
+    "turkish":"Turkish"
+
 }
