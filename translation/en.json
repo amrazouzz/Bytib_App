@@ -131,6 +131,17 @@
     "changeLanguage": "Change Language",
     "english":"English",
     "arabic":"Arabic",
-    "turkish":"Turkish"
+    "turkish":"Turkish",
+ 
+    "myReportsH": "MY REPORTS",
+    "myReportsHeadline": "Please Select The Reports You Want To See: ",
+    "medicalR": "Medical Reports",
+    "labR": "Lab Reports",
+    "sonarR": "Sonar Reports",
+    "radioR": "Radiology Reports",
+    "drugsR": "Drugs Reports",
+
+    "inboxH": "INBOX",
+    "fromDr": "From Dr. "
 
 }

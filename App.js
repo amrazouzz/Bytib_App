@@ -36,6 +36,8 @@ import MedicationSuccessScreen from './screens/medication/MedicationSuccess';
 import LabScreen from './screens/laboratory/LabScreen';
 import PharmacyScreen from './screens/pharmacy/PharmacyScreen';
 import SettingsScreen from './screens/settings/SettingsScreen';
+import MyReportsScreen from './screens/reports/MyReportsScreen';
+import InboxScreen from './screens/inbox/InboxScreen';
 
 
 // I18nManager.allowRTL(true)
@@ -85,6 +87,8 @@ export default function App() {
                 <Stack.Screen name="labScreen" component={LabScreen} />
                 <Stack.Screen name="pharmacyScreen" component={PharmacyScreen} />
                 <Stack.Screen name="settingsScreen" component={SettingsScreen} />
+                <Stack.Screen name="myReports" component={MyReportsScreen} />
+                <Stack.Screen name="inboxScreen" component={InboxScreen} />
 
         </Stack.Navigator>
       

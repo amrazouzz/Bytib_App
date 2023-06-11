@@ -91,8 +91,8 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Paper.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbReports')}</Link>
-        </View>
+            <Link style={styles.LinkText} to='/myReports'>{t('sbReports')}</Link>
+        </View> 
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
@@ -109,7 +109,7 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Message.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbInbox')}</Link>
+            <Link style={styles.LinkText} to='/inboxScreen'>{t('sbInbox')}</Link>
         </View>
 
         <TouchableOpacity onPress={handleSettingsPress}>

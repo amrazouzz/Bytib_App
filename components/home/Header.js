@@ -3,8 +3,6 @@ import { Pressable, StyleSheet, Text, TextInput, View, TouchableOpacity } from "
 import * as Icons from "react-native-heroicons/outline";
 import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../context/AuthContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
 
 export const Header = () => {
