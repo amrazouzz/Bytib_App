@@ -97,7 +97,7 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/family.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbFamily')}</Link>
+            <Link style={styles.LinkText} to='/familyMemberScreen'>{t('sbFamily')}</Link>
         </View>
 
         <View style={styles.Link}>
@@ -144,7 +144,7 @@ const Sidebar = () => {
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Calling.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbContact')}</Link>
+            <Link style={styles.LinkText} to='/contactScreen'>{t('sbContact')}</Link>
         </View>
 
         <Pressable onPress={handleLogoutPress}>

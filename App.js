@@ -38,6 +38,9 @@ import PharmacyScreen from './screens/pharmacy/PharmacyScreen';
 import SettingsScreen from './screens/settings/SettingsScreen';
 import MyReportsScreen from './screens/reports/MyReportsScreen';
 import InboxScreen from './screens/inbox/InboxScreen';
+import ContactScreen from './screens/contactus/ContactScreen';
+import FamilyMemberScreen from './screens/familyMembers/FamilyMemberScreen';
+import AddMember from './screens/familyMembers/AddMember';
 
 
 // I18nManager.allowRTL(true)
@@ -89,6 +92,9 @@ export default function App() {
                 <Stack.Screen name="settingsScreen" component={SettingsScreen} />
                 <Stack.Screen name="myReports" component={MyReportsScreen} />
                 <Stack.Screen name="inboxScreen" component={InboxScreen} />
+                <Stack.Screen name="contactScreen" component={ContactScreen} />
+                <Stack.Screen name="familyMemberScreen" component={FamilyMemberScreen} />
+                <Stack.Screen name="addFamilyMember" component={AddMember} />
 
         </Stack.Navigator>
       
