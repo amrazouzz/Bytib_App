@@ -41,6 +41,9 @@ import InboxScreen from './screens/inbox/InboxScreen';
 import ContactScreen from './screens/contactus/ContactScreen';
 import FamilyMemberScreen from './screens/familyMembers/FamilyMemberScreen';
 import AddMember from './screens/familyMembers/AddMember';
+import ConnectExisting from './screens/familyMembers/ConnectExisting';
+import ShareProfile from './screens/familyMembers/ShareProfile';
+import EditMember from './screens/familyMembers/EditMember';
 
 
 // I18nManager.allowRTL(true)
@@ -95,6 +98,9 @@ export default function App() {
                 <Stack.Screen name="contactScreen" component={ContactScreen} />
                 <Stack.Screen name="familyMemberScreen" component={FamilyMemberScreen} />
                 <Stack.Screen name="addFamilyMember" component={AddMember} />
+                <Stack.Screen name="editMember" component={EditMember} />
+                <Stack.Screen name="connectExisting" component={ConnectExisting} />
+                <Stack.Screen name="shareProfile" component={ShareProfile} />
 
         </Stack.Navigator>
       

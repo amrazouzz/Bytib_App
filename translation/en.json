@@ -159,6 +159,9 @@
     "relationship": "Relationship",
     "chronicDiseases": "Chronic Diseases",
     "addNewMember": "Add New Member",
-    "editMember": "Edit Member"
+    "editMember": "Edit Member",
 
-}
+    "scanProfile": "Scan The Profile Code",
+    "shareProfileTxt": "This QR_Code Helps Other To Link Noor Ahmed Profile"
+
+} 

@@ -18,6 +18,7 @@ import CommonHeader from "../../components/common/CommonHeader";
 const FamilyMemberScreen = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
+  const [hasMembers, setHasMembers] = useState(true)
 
 
 
@@ -36,7 +37,37 @@ const FamilyMemberScreen = () => {
       </SafeAreaView>
       <View style={styles.container}>
         <View style={styles.formContainer}>
-          <View style={styles.imageContainer}>
+          {hasMembers ? <View style={styles.familyContainer}>
+          
+            <View style={styles.memberItem} >
+              <Text style={styles.relationTxt}>SON</Text>
+              <View style={styles.item}>
+                <Text style={styles.name}>Ahmed Ahmed</Text>
+                <View style={styles.icons}>
+                  
+                  <TouchableOpacity onPress={()=>navigation.navigate('editMember')}>
+                  <View style={styles.iconContainer} >
+                  <Image source={require('../../assets/images/family/edit.png')} style={styles.icon} />
+                  </View>
+                  </TouchableOpacity>
+                  
+
+                  <TouchableOpacity onPress={()=> navigation.navigate('shareProfile')}>
+                  <View style={styles.iconContainer} >
+                  <Image source={require('../../assets/images/family/share.png')} style={styles.icon} />
+                  </View>
+                  </TouchableOpacity>
+                </View>
+                
+              </View>
+            </View>
+            
+            
+          
+          
+          </View> : 
+            <View style={{width:'100%'}}>
+            <View style={styles.imageContainer}>
             <Image
               style={styles.image}
               source={require('../../assets/images/family/family.png')}
@@ -45,11 +76,13 @@ const FamilyMemberScreen = () => {
                   
                   <Text style={styles.text}>{ t('noMembers') }</Text>
                  
+            </View>
+        }
 
           <TouchableOpacity style={styles.addBtn} onPress={()=> navigation.navigate('addFamilyMember')}>
             <Text style={styles.buttonText}>{t('addMember')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.existingBtn}>
+          <TouchableOpacity style={styles.existingBtn} onPress={()=> navigation.navigate('connectExisting')}>
             <Text style={styles.buttonText}>{t('connectExisting')}</Text>
           </TouchableOpacity>
         </View>
@@ -109,6 +142,48 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontWeight:"600"
 
+  },
+  familyContainer: {
+    width: '90%',
+  },
+  memberItem: {
+    marginBottom:20
+  },
+  item: {
+    flexDirection: 'row',
+    justifyContent:'space-between'
+  },
+  icons: {
+    flexDirection:'row'
+  },
+  iconContainer: {
+    width: 44,
+    height: 44,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5
+  },
+  icon: {
+    width: 15,
+    height: 15,
+    resizeMode:'contain'
+  },
+  name: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    alignItems: 'center',
+    marginHorizontal: 5,
+    paddingHorizontal: '12%',
+    textAlignVertical:'center'
+  },
+  relationTxt: {
+    fontSize: 20,
+    paddingHorizontal: 15,
+    marginBottom: 5,
+    fontWeight: '500',
+    color:'#528DA7'
   }
 });
 

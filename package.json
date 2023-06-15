@@ -31,6 +31,7 @@
     "react-art": "^18.2.0",
     "react-i18next": "^12.3.1",
     "react-native": "0.71.7",
+    "react-native-camera": "^4.2.1",
     "react-native-country-picker-modal": "^2.0.0",
     "react-native-datepicker": "^1.7.2",
     "react-native-heroicons": "^3.2.0",
@@ -51,7 +52,9 @@
     "react-native-utils-navigation-bar": "^2.0.4",
     "tailwind-rn": "^4.2.0",
     "tailwindcss": "^3.3.2",
-    "tailwindcss-react-native": "^1.7.10"
+    "tailwindcss-react-native": "^1.7.10",
+    "expo-camera": "~13.2.1",
+    "expo-permissions": "~14.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
