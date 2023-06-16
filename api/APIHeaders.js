@@ -15,8 +15,8 @@ export const getAPIHeaders = async (lang_code, with_auth) => {
     'Content-Type': 'application/json'
   };
 
-  // Add lang_code to headers with the name ByTib_Lang
-  headers['ByTib_Lang'] = lang_code;
+  // Add lang_code to headers with the name Bytib-Lang
+  headers['Bytib-Lang'] = lang_code;
 
   if (with_auth) {
     // Get the token from AsyncStorage or any other storage mechanism

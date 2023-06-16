@@ -6,10 +6,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Icons from 'react-native-heroicons/solid';
 import Comment from '../components/articles/Comment';
 import CreateComment from '../components/articles/CreateComment';
+import { useTranslation } from 'react-i18next';
 
 const ArticleDetails = ({ route }) => {
   const { subject, banner_image, doctor_name, body_text } = route.params.article;
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -76,7 +78,7 @@ const ArticleDetails = ({ route }) => {
         </View>
         {/* Comment Section */}
         <View style={styles.commentSection}>
-          <Text style={styles.sectionTitle}>Comments</Text>
+          <Text style={styles.sectionTitle}>{t('comments')}</Text>
           {/* Add your comment component here */}
             {/* <Comment /> */}
           <CreateComment />

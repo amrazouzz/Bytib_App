@@ -12,12 +12,16 @@ import Header from "../components/doctorProfile/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { API_URL } from "../api/api";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useTranslation } from "react-i18next";
+import Map from "../components/doctorProfile/Map";
+import { HeartIcon, ShareIcon } from 'react-native-heroicons/outline'; // Import the desired Hero Icons
 
 const DrProfile = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const doctorId = route.params?.doctorId;
   const [doctor, setDoctor] = useState(null);
+  const {t,i18n} = useTranslation();
 
   useEffect(() => {
     fetchDoctorData();
@@ -58,7 +62,7 @@ const DrProfile = () => {
   if (!doctor) {
     return (
       <View style={styles.loadingContainer}>
-        <Text>Loading...</Text>
+        <Text>{t('loading')}</Text>
       </View>
     );
   }
@@ -68,7 +72,16 @@ const DrProfile = () => {
       <StatusBar barStyle="dark-content" backgroundColor="#eaf5fa" />
       <Header />
       <View style={{ flex: 1 }}>
+      <View style={{flexDirection:'row', paddingHorizontal:15, paddingVertical:10}}>
         
+        <TouchableOpacity onPress={() => handleSharePress(doctorId)}>
+          <ShareIcon style={styles.icon} size={24} color="#000" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => handleHeartPress(doctorId)}>
+          <HeartIcon style={{marginHorizontal:10}} size={24} color="#000" />
+        </TouchableOpacity>
+      </View>
 
         <View style={styles.container}>
           <View style={styles.imageContainer}>
@@ -91,17 +104,23 @@ const DrProfile = () => {
               {renderRatingStars(doctor.rating)}
             </View>
             <TouchableOpacity onPress={() => handleBookingPress(doctorId)} style={styles.button}>
-              <Text style={styles.buttonText}>Book an Appointment</Text>
+              <Text style={styles.buttonText}>{t('bookAppointment')}</Text>
             </TouchableOpacity>
           </View>
 
           {/* body */}
-          <View>
-            <Text>Here goes the Map</Text>
+            {/* map */}
+          <View style={{height:210, width:'80%'}}>
+          <Map doctor={doctor} />
           </View>
 
           <View>
             <Text className='pt-10'>About section</Text>
+          </View>
+
+
+          <View>
+            <Text className='pt-10'>Reviews section</Text>
           </View>
         </View>
       </View>
@@ -119,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 130,
+    bottom: 70,
   },
   imageContainer: {
     width: 121,
@@ -138,12 +157,12 @@ const styles = StyleSheet.create({
     borderWidth:3
   },
   infoContainer: {
-    alignItems: "center",
+    alignItems: "center", 
   },
   name: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   category: {
     fontSize: 16,

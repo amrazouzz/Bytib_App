@@ -28,14 +28,33 @@ import DrProfile from './screens/DrProfile';
 import BookAppointmentScreen from './screens/booking/BookAppointmentScreen';
 import BookingFaild from './screens/booking/BookingFaild';
 import BookingSuccess from './screens/booking/BookingSuccess';
+import MyProfile from './screens/profile/MyProfile';
+import EditProfile from './screens/profile/EditProfile';
+import About from './screens/About';
+import MedicationScreen from './screens/medication/MedicationScreen';
+import MedicationSuccessScreen from './screens/medication/MedicationSuccess';
+import LabScreen from './screens/laboratory/LabScreen';
+import PharmacyScreen from './screens/pharmacy/PharmacyScreen';
+import SettingsScreen from './screens/settings/SettingsScreen';
+import MyReportsScreen from './screens/reports/MyReportsScreen';
+import InboxScreen from './screens/inbox/InboxScreen';
+import ContactScreen from './screens/contactus/ContactScreen';
+import FamilyMemberScreen from './screens/familyMembers/FamilyMemberScreen';
+import AddMember from './screens/familyMembers/AddMember';
+import ConnectExisting from './screens/familyMembers/ConnectExisting';
+import ShareProfile from './screens/familyMembers/ShareProfile';
+import EditMember from './screens/familyMembers/EditMember';
 
 
+// I18nManager.allowRTL(true)
 
-I18nManager.forceRTL(false);
+
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+
   return (
     <NavigationContainer >
       <TailwindProvider>
@@ -66,6 +85,22 @@ export default function App() {
                 <Stack.Screen name="notifications" component={NotificationsScreen} />
                 <Stack.Screen name="categories" component={CategoriesScreen} />
                 <Stack.Screen name="categoryDoctors" component={CategoryDoctorsScreen} />
+                <Stack.Screen name="myProfile" component={MyProfile} />
+                <Stack.Screen name="editMyProfile" component={EditProfile} />
+                <Stack.Screen name="about" component={About} />
+                <Stack.Screen name="medicationScreen" component={MedicationScreen} />
+                <Stack.Screen name="medicationSuccess" component={MedicationSuccessScreen} />
+                <Stack.Screen name="labScreen" component={LabScreen} />
+                <Stack.Screen name="pharmacyScreen" component={PharmacyScreen} />
+                <Stack.Screen name="settingsScreen" component={SettingsScreen} />
+                <Stack.Screen name="myReports" component={MyReportsScreen} />
+                <Stack.Screen name="inboxScreen" component={InboxScreen} />
+                <Stack.Screen name="contactScreen" component={ContactScreen} />
+                <Stack.Screen name="familyMemberScreen" component={FamilyMemberScreen} />
+                <Stack.Screen name="addFamilyMember" component={AddMember} />
+                <Stack.Screen name="editMember" component={EditMember} />
+                <Stack.Screen name="connectExisting" component={ConnectExisting} />
+                <Stack.Screen name="shareProfile" component={ShareProfile} />
 
         </Stack.Navigator>
       

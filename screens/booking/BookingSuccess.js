@@ -4,9 +4,11 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { BackHandler } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const BookingSuccess = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation()
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -31,11 +33,11 @@ const BookingSuccess = () => {
 
       <View style={styles.container} >
       <Image style={styles.image} source={require('../../assets/images/booking/success.png')} />
-      <Text className='font-extrabold pt-8 pb-2 text-xl px-24'>Your Appointment Has Been Created</Text>
-      <Text className='px-10 text-center'>Your appointment has been created successfully.</Text>
+      <Text className='font-extrabold pt-8 pb-2 text-xl px-24'>{t('bookErr')}</Text>
+      <Text className='px-10 text-center'>{t('bookSuccessDesc')}</Text>
 
       <TouchableOpacity onPress={() => navigation.navigate('home')}>
-        <Text style={styles.button}>DONE </Text>
+        <Text style={styles.button}>{t('done')}</Text>
       </TouchableOpacity>
       </View>
     </View>

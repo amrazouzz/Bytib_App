@@ -10,9 +10,11 @@ import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const SuccessfulPassword = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const handleBackPress = () => {
     navigation.goBack();
@@ -39,12 +41,12 @@ const SuccessfulPassword = () => {
         <SafeAreaView style={{ flex: 1 }}>
           <Header />
           <View style={styles.buttonContainer}>
-              <Text style={styles.Text} >THE RESET WAS SUCCESSFUL</Text>
-              <Text style={styles.Discription} >some description some description some description</Text>
+              <Text style={styles.Text} >{t('resetSuccessTitle')}</Text>
+              <Text style={styles.Discription} >{t('resetSuccessDesc')}</Text>
 
             <View style={{ flexDirection: "column" }}>
               <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleLoginPress}>
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>{t('login')}</Text>
               </TouchableOpacity>
             </View>
           </View>

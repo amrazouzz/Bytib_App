@@ -1,5 +1,167 @@
 {
     "categoryTitle": "Category",
     "seeAll":"See All",
-    "topRated":"Top Rated"
-}
+    "topRated":"Top Rated",
+    "next":"Next",
+    "onBoardingDesc1":"Description of Screen 1",
+    "onBoardingDesc2":"Description of Screen 2",
+    "onBoardingDesc3":"Description of Screen 3",
+    "getStarted":"Get Started",
+    "login":"Login",
+    "signup":"Sign Up",
+    "forgotPassword":"Forgot Password?",
+    "emailOrMob":"Email Or Mobile No",
+    "password":"Password",
+    "fullName":"Full Name",
+    "selectCity":"Select city",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "height": "Height",
+    "weight": "Weight",
+    "diseares": "Chronic Diseares",
+    "other":"Other",
+    "save": "Save",
+    "send": "Send",
+    "forgotPasswordDesc": "Description",
+    "verificaitonTitle": "VERIFICATION",
+    "verificationDesc": "Description",
+    "check":"Check",
+    "resend": "RESEND",
+    "resendOn":"Resend on",
+    "passwordResetTitle":"PASSWORD RESET",
+    "passwordResetDesc":"Description",
+    "rePassword":"Re Password",
+    "confirm":"CONFIRM",
+    "resetSuccessTilte": "THE RESET WAS SUCCESSFUL",
+    "resetSuccessDesc": "some description some description some description"
+    ,
+     
+    "articlesHeader": "ARTICLES",
+    "articlesRecommend": "Recommend",
+    "articlesNew": "New Articles",
+    "comments": "Comments",
+    "leaveComment": "Leave a comment",
+
+    "categoriesHeader": "Categories",
+    "doctors": "Doctors",
+    "openDr":"Open Now",
+    "onlineDr": "Online Doctors",
+
+    "loading":"Loading...",
+    "bookAppointment": "Book an Appointment",
+    "drHeader": "Doctor Profile",
+
+    "favHeader": "Favorites",
+    "search": "Search",
+
+    "sbProfile":"My Profile",
+    "sbAppointments":"My Appointments",
+    "sbReports":"My Reports",
+    "sbSettings":"Settings",
+    "sbLogout":"Logout",
+    "sbFamily": "Family Member Profile",
+    "sbPharmacies": "Pharamcies Open",
+    "sbInbox": "Inbox",
+    "sbAbout": "About App",
+    "sbShare": "Share App",
+    "sbContact": "Contact Us",
+    "sbRate": "Rate App",
+
+    "notificationHeader": "Notifications",
+    "new": "New",
+    "earlier": "Earlier",
+    "noNotifications": "No Notifications Yet!",
+
+    "bookHeader":"BOOK AN APPOINTMENT",
+    "bookDate": "Choose Date",
+    "bookTime": "Available Time",
+    "bookErr":"An Error Occurred",
+    "bookErrDesc":"This time has been booked by another user, please choose another time",
+    "bookSuccess": "Your Appointment Has Been Created",
+    "bookSuccessDesc": "Your appointment has been booked successfully",
+    "back":"BACK",
+    "done": "DONE",
+
+
+    "myProfileHeader": "PROFILE",
+    "editProfile": "Edit Profile",
+    "bio": "Bio",
+    "general": "General",
+    "eMail": "E-mail",
+    "mobile": "Mobile",
+    "name": "Name",
+    "dob":"DOB",
+    "city": "City",
+
+    "selectBD": "Select Birth Date",
+
+    "aboutHeader":"ABOUT APP",
+    "aboutText":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et."
+
+    ,"shareTitle": "here gose the title",
+    "shareMessage" :"here goes the share message I prefer using the app link"
+
+    ,"medicationSearch": "SEARCH FOR MEDICATION",
+    "searchMedicationHeader": "SEARCH FOR MEDICATION",
+    "searchMedication": "Medicament Name",
+    "launchCamera": "Launch Camera For Image",
+    "chooseImg" : "Choose Image",
+    "sending": "Sending",
+    "myOrder": "MY ORDER",
+    "medicationSuccessText": "Your request has been sent to the five nearest pharmacies, you can track the request from the My order list"
+
+    ,"passwordMatch": "Please make sure the passwords match",
+    "passwordLess": "Your Password should be more than 6 letters",
+    "resetSuccessTitle": "SUCCESSFUL",
+
+    "logoutAlertHeader": "Confirm Logout",
+    "logoutAlertQuestion": "Are you sure you want to logout?",
+    "cancel": "CANCEL",
+
+
+    "settingsH": "SETTINGS",
+    "changePassword": "Change Password",
+    "allowVoice": "Allow Voice Chat",
+    "allowVideo": "Allow Call Video",
+    "allowCall": "Allow Call Chat",
+    "notifications": "Notifications",
+    "language": "Language",
+
+    "changeLanguage": "Change Language",
+    "english":"English",
+    "arabic":"Arabic",
+    "turkish":"Turkish",
+ 
+    "myReportsH": "MY REPORTS",
+    "myReportsHeadline": "Please Select The Reports You Want To See: ",
+    "medicalR": "Medical Reports",
+    "labR": "Lab Reports",
+    "sonarR": "Sonar Reports",
+    "radioR": "Radiology Reports",
+    "drugsR": "Drugs Reports",
+
+    "inboxH": "INBOX",
+    "fromDr": "From Dr. ",
+
+
+    "contactUs": "CONTACT US",
+    "title": "Title",
+    "email": "Email",
+    "message": "Message",
+    "selectFile": "Select A File",
+
+    "noMembers":"No Members Yet",
+    "addMember":"ADD MEMBER",
+    "connectExisting":"CONNECT TO EXISTING",
+
+    "birthD": "Birth Daay",
+    "relationship": "Relationship",
+    "chronicDiseases": "Chronic Diseases",
+    "addNewMember": "Add New Member",
+    "editMember": "Edit Member",
+
+    "scanProfile": "Scan The Profile Code",
+    "shareProfileTxt": "This QR_Code Helps Other To Link Noor Ahmed Profile"
+
+} 

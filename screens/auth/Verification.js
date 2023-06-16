@@ -12,21 +12,71 @@ import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
+import { useTranslation } from "react-i18next";
+import axios from 'axios';
+import { getHeaders } from "../../api/APIHeaders";
 
-const VerificationScreen = () => {
+
+const VerificationScreen = ({ route }) => {
   const [verification, setVerification] = useState("");
   const [timer, setTimer] = useState(60);
   const navigation = useNavigation();
+  const {t} = useTranslation();
+  const [email, setEmail] = useState("");
+
+
+
 
   const handleForgotPress = async () => {
-    navigation.navigate("passwordReset");
+try {
+  const headers = await getHeaders();
+  const response = await fetch(`${API_URL}/password_reset/`,{
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      'email-tel':email,
+      'code': verification
+    })
+  } );
+
+  const data = await response.json();
+
+
+  if (response.ok) {
+    // Appointment booked successfully
+    navigation.navigate('passwordReset', { email: email });
+  } else {
+    // Handle error case
+    const errorResponse = await response.json();
+    console.log(errorResponse);
+    
+  }
+
+} catch (error) {
+  console.log('catch error: ', error)
+}
+
   };
+  
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
+
+
+
+
+  useEffect(() => {
+    if (route.params && route.params.email) {
+      setEmail(route.params.email); 
+    }
+  }, [route.params]);
+
+
+
 
   useEffect(() => {
     if (timer > 0) {
@@ -61,13 +111,13 @@ const VerificationScreen = () => {
         <View style={styles.formContainer}>
           <View>
             <Text className="text-xl font-bold" style={{ color: "#509ca4",    fontWeight:'900' }}>
-              VERIFICATION
+              {t('verificaitonTitle')}
             </Text>
             <Text
               className="font-bold"
               style={{ alignSelf: "center", alignContent: "center" }}
             >
-              Discription
+              {t('verificationDesc')}
             </Text>
           </View>
            <View style={styles.inputContainer}>
@@ -102,16 +152,16 @@ const VerificationScreen = () => {
           </View>
           {timer === 0 ? (
             <TouchableOpacity style={styles.resendButton} onPress={handleResend}>
-              <Text style={{ color: "#509ca4" }}>RESEND</Text>
+              <Text style={{ color: "#509ca4" }}>{t('resend')}</Text>
             </TouchableOpacity>
           ) : (
             <View style={styles.timerContainer}>
-              <Text style={{ color: "#b3c3cd" }}>Resend on</Text>
+              <Text style={{ color: "#b3c3cd" }}>{t('resendOn')}</Text>
               <Text style={{ fontWeight: "bold" }}>{timer}</Text>
             </View>
           )}
           <TouchableOpacity style={styles.checkButton} onPress={handleResendPress}>
-            <Text style={{ color: "#fff" }}>Resend</Text>
+            <Text style={{ color: "#fff" }}>{t('resend')}</Text>
           </TouchableOpacity>
         </View>
 
@@ -119,7 +169,7 @@ const VerificationScreen = () => {
             style={styles.loginButton}
             onPress={handleForgotPress}
           >
-            <Text style={styles.buttonText}>CHECK</Text>
+            <Text style={styles.buttonText}>{t('check')}</Text>
           </TouchableOpacity>
         </View>
       </View>

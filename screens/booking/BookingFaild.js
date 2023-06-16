@@ -5,9 +5,11 @@ import { Image } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import Header from '../../components/auth/Header';
+import { useTranslation } from 'react-i18next';
 
 const BookingFaild = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation()
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -23,11 +25,11 @@ const BookingFaild = () => {
 
     <View style={styles.container} >
     <Image style={styles.image} source={require('../../assets/images/booking/fail.png')} />
-    <Text className='font-extrabold pt-8 pb-2 text-xl px-24'>An Error Occurred</Text>
-    <Text className='px-12 text-center'>This time has been booked by another user, please choose another time</Text>
+    <Text className='font-extrabold pt-8 pb-2 text-xl px-24'>{t('bookErr')}</Text>
+    <Text className='px-12 text-center'>{t('bookErrDesc')}</Text>
 
     <TouchableOpacity onPress={() => navigation.goBack()}>
-      <Text style={styles.button}>BACK </Text>
+      <Text style={styles.button}>{t('back')}</Text>
     </TouchableOpacity>
     </View>
   </View>

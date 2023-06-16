@@ -2,9 +2,11 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import * as Icons from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const navigation = useNavigation();
+  const {t,i18n} = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -18,14 +20,17 @@ export default function Header() {
           }}
           onPress={() => navigation.goBack()}
         >
-          <Icons.ArrowLeftIcon
+          {i18n.language === 'ar'?  <Icons.ArrowRightIcon
             color="#ffffff"
             className="h-7 w-7 text-gray-500"
-          />
+          /> :  <Icons.ArrowLeftIcon
+            color="#ffffff"
+            className="h-7 w-7 text-gray-500"
+          />}
         </Pressable>
       </View>
       {/* Title */}
-      <Text className='font-extrabold' style={styles.title}>ARTICLES</Text>
+      <Text className='font-extrabold' style={styles.title}>{t('articlesHeader')}</Text>
     </View>
   );
 }

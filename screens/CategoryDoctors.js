@@ -8,10 +8,13 @@ import { FlatList } from "react-native";
 import { Image } from "react-native";
 import { ClockIcon, CogIcon, StarIcon } from "react-native-heroicons/outline";
 import { MapIcon, MapPinIcon } from "react-native-heroicons/solid";
+import { useTranslation } from "react-i18next";
 
 const CategoryDoctorsScreen = ({ route }) => {
   const [doctors, setDoctors] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
   const navigation = useNavigation();
+  const {t,i18n} = useTranslation();
 
   useEffect(() => {
     fetchDoctors(route.params.categoryId);
@@ -23,18 +26,26 @@ const CategoryDoctorsScreen = ({ route }) => {
     });
   }, []);
 
-  
-  const fetchDoctors = (categoryId) => {
-      const params = new URLSearchParams();
-      params.append('category_id', categoryId);
-    
-      fetch(`${API_URL}/doctors?${params.toString()}`)
-        .then((response) => response.json())
-        .then((data) => {
-          // Handle API response
-          setDoctors(data.results);
-        });
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    // Call the fetchDoctors function with the selected option
+    fetchDoctors(route.params.categoryId, option); // Pass the selected option as an argument
   };
+
+  
+  const fetchDoctors = (categoryId, option) => {
+    const params = new URLSearchParams();
+    params.append('category_id', categoryId);
+    // params.append('option', option); // Add the selected option to the query parameters
+  
+    fetch(`${API_URL}/doctors?${params.toString()}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle API response
+        setDoctors(data.results);
+      });
+  };
+  
   const handleDoctorPress = (doctorId) => {
     navigation.navigate('doctorProfile', { doctorId });
 
@@ -65,7 +76,7 @@ const CategoryDoctorsScreen = ({ route }) => {
         <View style={styles.textContainer}>
   <View style={styles.iconTextContainer}>
     <ClockIcon  size={20} color={"green"} />
-    <Text style={styles.iconText}>Open Now</Text>
+    <Text style={styles.iconText}>{t('openDr')}</Text>
   </View>
   <View style={styles.iconTextContainer}>
     <StarIcon size={20} color={"yellow"} />
@@ -82,7 +93,7 @@ const CategoryDoctorsScreen = ({ route }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
       {/* Header */}
-      <Header />
+      <Header onSelectOption={handleOptionSelect}/>
 
       {/* Body */}
       <View style={styles.container}>

@@ -11,16 +11,45 @@ import {
 } from "react-native";
 import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
-import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
+import { useTranslation } from "react-i18next";
+import { getHeaders } from "../../api/APIHeaders";
+import axios from "axios";
+
 
 const ForgotScreen = () => {
   const [email, setEmail] = useState("");
   const navigation = useNavigation();
+  const {t} = useTranslation();
+
+
 
   const handleForgotPress = async () => {
-    navigation.navigate('verificationScreen')
+    try {
+      const headers = await getHeaders();
+      const mail = email;
+      const url = `${API_URL}/password_reset/?email-tel=${encodeURIComponent(mail)}`;
+
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: headers,
+      });
+  
+      const data = await response.json();
+  
+  
+      if (response.ok) {
+        navigation.navigate('verificationScreen', { email });
+      } else {
+        console.log('data error', data.error);
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
   };
+  
+  
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -40,12 +69,12 @@ const ForgotScreen = () => {
         <View style={styles.formContainer}>
         <Image style={{width:200, marginBottom:10}} source={require('../../assets/images/auth/forgot.png')} />
           <View>
-            <Text className='text-xl font-bold' style={{color:'#509ca4',    fontWeight:'900' }}>FORGOT PASSWORD</Text>
-            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>Discription</Text>
+            <Text className='text-xl font-bold ' style={{color:'#509ca4',    fontWeight:'900' }}>{t('forgotPassword')}</Text>
+            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>{t('forgotPasswordDesc')}</Text>
         </View>
           <TextInput
             style={styles.input}
-            placeholder="Email Or Mobile No"
+            placeholder={t('emailOrMob')}
             placeholderTextColor="#b3c3cd"
             value={email}
             onChangeText={setEmail}
@@ -55,13 +84,16 @@ const ForgotScreen = () => {
             style={styles.loginButton}
             onPress={handleForgotPress}
           >
-            <Text style={styles.buttonText}>SEND</Text>
+            <Text style={styles.buttonText}>{t('send')}</Text>
           </TouchableOpacity>
         </View>
       </View>
     </View>
   );
 };
+
+
+
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#eaf5fa",

@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../../api/api';
 import { getHeaderWithAuth } from '../../api/APIHeaders';
+import { useTranslation } from 'react-i18next';
 
 const BookAppointmentScreen = () => {
   const navigation = useNavigation();
@@ -17,6 +18,7 @@ const BookAppointmentScreen = () => {
   const doctorId = route.params?.doctorId;
   const [availableTime, setAvailableTime] = useState([]);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(null); // Add selectedTimeSlot state variable
+  const {t,i18n} = useTranslation();
 
 
   useLayoutEffect(() => {
@@ -134,7 +136,7 @@ const BookAppointmentScreen = () => {
       <AppointmentHeader />
 
       <View>
-        <Text className='font-bold px-2 pt-7 pb-5'>Choose Date</Text>
+        <Text className='font-bold px-2 pt-7 pb-5'>{t('bookDate')}</Text>
         <View>
           <TouchableOpacity
             style={styles.datePickerButton}
@@ -157,7 +159,7 @@ const BookAppointmentScreen = () => {
         </View>
       </View>
 
-      <Text className='font-bold px-2  pb-2'>Available Time</Text>
+      <Text className='font-bold px-2  pb-2'>{t('bookTime')}</Text>
 
 
       <FlatList
@@ -167,7 +169,7 @@ const BookAppointmentScreen = () => {
       />
     <TouchableOpacity onPress={handleConfirm}>
       <View style={styles.buttonContainer}>
-        <Text className='text-white font-bold' >CONFIRM</Text>
+        <Text className='text-white font-bold' >{t('confirm')}</Text>
       </View>
       </TouchableOpacity>
     </View>

@@ -29,7 +29,7 @@ const NavBar = () => {
             zIndex: 10,
           }}
         >
-          <TouchableOpacity   onPress={() => navigation.navigate("map")}>
+          <TouchableOpacity onPress={() => navigation.navigate("map")}>
             <View style={[styles.button, styles.actionBtn]}>
               <Image
                 style={{ width: 60, height: 60, top: 10 }}

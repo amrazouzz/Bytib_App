@@ -3,11 +3,12 @@ import { Pressable, StyleSheet, Text, TextInput, View, TouchableOpacity } from "
 import * as Icons from "react-native-heroicons/outline";
 import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../context/AuthContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 export const Header = () => {
   const navigation = useNavigation();
+  const {t,i18n} = useTranslation();
+
 
 
 
@@ -40,6 +41,7 @@ export const Header = () => {
   return (
     <View>
       <View style={{ marginTop: StatusBar.currentHeight }}>
+        {/* <View> */}
         <View className="flex-row pb-3 items-center pt-3 space-x-2 justify-center bg-white w-full">
           <View className="flex-row items-center bg-gray-300 rounded-xl p-2 w-3/4">
           <TouchableOpacity
@@ -56,7 +58,7 @@ export const Header = () => {
               />
             </TouchableOpacity>
             <TextInput
-              placeholder="Search"
+              placeholder={t('search')}
               placeholderTextColor="white"
               style={{
                 marginLeft: 10,

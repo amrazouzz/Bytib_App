@@ -1,22 +1,76 @@
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import { Share } from 'react-native';
 
 
 const Sidebar = () => {
     const navigation = useNavigation()
+    const {t} = useTranslation()
 
     const handleLogoutPress = () => {
-        console.log('loggedOut')
-        AsyncStorage.removeItem('AccessToken');
-        AsyncStorage.removeItem('userInfo');
-        navigation.navigate('onBoarding');
-      }
+        Alert.alert(
+          t('logoutAlertHeader'),
+          t('logoutAlertQuestion'),
+          [
+            {
+              text: t('cancel'),
+              style: 'cancel',
+            },
+            {
+              text: t('logout'),
+              onPress: () => {
+                AsyncStorage.removeItem('AccessToken');
+                AsyncStorage.removeItem('userInfo');
+                navigation.navigate('onBoarding');
+              },
+              style: 'destructive',
+            },
+          ],
+        );
+      };
 
+
+      const handleSettingsPress = () => {
+        navigation.navigate('settingsScreen');
+      };
+
+
+
+      const handleShare = async () => {
+        try {
+          const shareOptions = {
+            title: `${t('shareTitle')}`,
+            message:`${t('shareMessage')}`
+          };
+          const result = await Share.share(shareOptions);
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+              // Shared with activity type of result.activityType
+              console.log('Shared with activity type of result.activityType');
+            } else {
+              // Shared
+              console.log('Shared');
+            }
+          } else if (result.action === Share.dismissedAction) {
+            // Dismissed the share dialog
+            console.log('Dismissed the share dialog');
+          }
+        } catch (error) {
+          console.log('shareErr', error);
+        }
+    };      
+      
+      
+      
+      
+      
     return (
     <View style={styles.container}>
     {/* Drawer */}
@@ -25,73 +79,79 @@ const Sidebar = () => {
         
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer} ><Image style={styles.LinkIcon}  source={require('../../assets/images/sidebar/Profile.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>My Profile</Link>
+            <Link style={styles.LinkText} to='/myProfile'>{t('sbProfile')}</Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-7 w-7' source={require('../../assets/images/sidebar/30-appointment.png')} />
+            <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/30-appointment.png')} />
+
                 </View>
-            <Link style={styles.LinkText} to='/home'>My Appointments</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbAppointments')}</Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Paper.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>My Reports</Link>
-        </View>
+            <Link style={styles.LinkText} to='/myReports'>{t('sbReports')}</Link>
+        </View> 
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-8' source={require('../../assets/images/sidebar/family.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Family Member Profile</Link>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/family.png')} /></View>
+            <Link style={styles.LinkText} to='/familyMemberScreen'>{t('sbFamily')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/location.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Pharamcies Open</Link>
+            <Link style={styles.LinkText} to='/home'>{t('sbPharmacies')}</Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Message.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Inbox</Link>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Message.png')} /></View>
+            <Link style={styles.LinkText} to='/inboxScreen'>{t('sbInbox')}</Link>
         </View>
+
+        <TouchableOpacity onPress={handleSettingsPress}>
+        <View style={styles.Link}>
+            <View style={styles.LinkIconContainer}>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Setting.png')} /></View>
+            <Text style={styles.LinkText} >{t('sbSettings')}</Text>
+        </View>
+        </TouchableOpacity>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Setting.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Settings</Link>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/about.png')} /></View>
+            <Link style={styles.LinkText} to='/about'>{t('sbAbout')}</Link>
         </View>
+
+        <Pressable onPress={handleShare}>
+        <View style={styles.Link}>
+            <View style={styles.LinkIconContainer}>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Shape.png')} /></View>
+            <Text style={styles.LinkText} >{t('sbShare')}</Text>
+        </View>
+        </Pressable>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/about.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>About App</Link>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Star.png')} /></View>
+            <Link style={styles.LinkText} to='/home'>{t('sbRate')}</Link>
         </View>
+
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Shape.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Share App</Link>
-        </View>
-
-        <View style={styles.Link}>
-            <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-7' source={require('../../assets/images/sidebar/Star.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Rate App</Link>
-        </View>
-
-        <View style={styles.Link}>
-            <View style={styles.LinkIconContainer}>
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Calling.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>Contact Us</Link>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Calling.png')} /></View>
+            <Link style={styles.LinkText} to='/contactScreen'>{t('sbContact')}</Link>
         </View>
 
         <Pressable onPress={handleLogoutPress}>
         <View style={styles.Link} >
             <View style={styles.LinkIconContainer} >
-                <Image className='h-6 w-6' source={require('../../assets/images/sidebar/Logout.png')} /></View>
-            <Text style={styles.LinkText}>Log Out</Text>
+                <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Logout.png')} /></View>
+            <Text style={styles.LinkText}>{t('sbLogout')}</Text>
         </View>
         </Pressable>
 
@@ -126,13 +186,15 @@ Link:{
     marginBottom:20
 },
 LinkIconContainer:{
-    width:20,
-    height:25,
-    marginRight:15
+    width:25,
+    height:30,
+    marginRight:15,
+    
 },
 LinkIcon:{
-    width:'115%',
-    height:'115%'
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
 },
 LinkText:{
     paddingHorizontal:15,
