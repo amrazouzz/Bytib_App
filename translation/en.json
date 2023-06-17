@@ -162,6 +162,14 @@
     "editMember": "Edit Member",
 
     "scanProfile": "Scan The Profile Code",
-    "shareProfileTxt": "This QR_Code Helps Other To Link Noor Ahmed Profile"
+    "shareProfileTxt": "This QR_Code Helps Other To Link Noor Ahmed Profile",
+
+    "labReportH": "LAB TEST",
+    "searchPlaceholder": "Search Document",
+    "sortOptions": "Sort by",
+    "labTestM": "Lab Test per month",
+
+    "downloadReport":"Download the Report as PDF",
+    "ok":"OK"
 
 } 

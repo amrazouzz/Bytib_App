@@ -44,6 +44,8 @@ import AddMember from './screens/familyMembers/AddMember';
 import ConnectExisting from './screens/familyMembers/ConnectExisting';
 import ShareProfile from './screens/familyMembers/ShareProfile';
 import EditMember from './screens/familyMembers/EditMember';
+import LabReports from './screens/reports/lab/LabReports';
+import MyReport from './screens/reports/lab/MyReport';
 
 
 // I18nManager.allowRTL(true)
@@ -101,9 +103,11 @@ export default function App() {
                 <Stack.Screen name="editMember" component={EditMember} />
                 <Stack.Screen name="connectExisting" component={ConnectExisting} />
                 <Stack.Screen name="shareProfile" component={ShareProfile} />
+                <Stack.Screen name="labReports" component={LabReports} />
+                <Stack.Screen name="myReport" component={MyReport} />
 
         </Stack.Navigator>
-      
+       
       </TailwindProvider>
     </NavigationContainer>
   );
