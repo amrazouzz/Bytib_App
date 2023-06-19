@@ -170,6 +170,11 @@
     "labTestM": "Lab Test per month",
 
     "downloadReport":"Download the Report as PDF",
-    "ok":"OK"
+    "ok":"OK",
+
+    "recievedBy" : "RECEIVED BY",
+    "notAvailable": "NOT AVAILABLE",
+    "available": "AVAILABLE",
+    "alternative": "ALTRERNATIVE"
 
 } 
