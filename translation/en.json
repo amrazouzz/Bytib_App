@@ -175,6 +175,13 @@
     "recievedBy" : "RECEIVED BY",
     "notAvailable": "NOT AVAILABLE",
     "available": "AVAILABLE",
-    "alternative": "ALTRERNATIVE"
+    "alternative": "ALTRERNATIVE",
+
+    "availableOrder": "available",
+    "unavailable": "unavailable",
+    "substituteDates": "substituteDates",
+    "cancelOreder": "Cancel Order",
+    "expandExpansion": "Expand Expansion",
+    "recievedOrder": "I,V Receive My Order"
 
 } 
