@@ -48,6 +48,7 @@ import LabReports from './screens/reports/lab/LabReports';
 import MyReport from './screens/reports/lab/MyReport';
 import SearchScreen from './screens/search/SearchScreen';
 import MyOrdersScreen from './screens/myOrders/MyOrdersScreen';
+import DoctorRate from './screens/rateDr/DoctorRate';
 
 
 // I18nManager.allowRTL(true)
@@ -109,6 +110,7 @@ export default function App() {
                 <Stack.Screen name="myReport" component={MyReport} />
                 <Stack.Screen name="searchScreen" component={SearchScreen} />
                 <Stack.Screen name="myOrdersScreen" component={MyOrdersScreen} />
+                <Stack.Screen name="rateDoctor" component={DoctorRate} />
 
         </Stack.Navigator>
        

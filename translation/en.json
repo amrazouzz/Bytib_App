@@ -182,6 +182,11 @@
     "substituteDates": "substituteDates",
     "cancelOreder": "Cancel Order",
     "expandExpansion": "Expand Expansion",
-    "recievedOrder": "I,V Receive My Order"
+    "recievedOrder": "I,V Receive My Order",
+
+    "backHome": "Back To Home",
+    "continue": "Continue",
+    "doctorRate": "Doctor Rate",
+    "thanksRating": "Thanks for your awesome experience"
 
 } 
