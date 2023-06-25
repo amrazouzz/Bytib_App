@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.SpeectToTextApp",
- "infoPlist": {
+      "infoPlist": {
         "NSSpeechRecognitionUsageDescription": "This app uses speech recognition to convert your speech to text.",
         "NSCameraUsageDescription": "This app uses the camera to let user put a photo in his profile page."
       }
@@ -31,7 +31,9 @@
         "backgroundColor": "#EAF5FA"
       },
       "permissions": [
-        "android.permission.RECORD_AUDIO"
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
       "package": "com.anonymous.SpeechToTextApp"
     },
@@ -40,7 +42,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "e5300936-5e16-465b-97e5-38b17a04f0af"
+        "projectId": "06f8c8d0-7e75-4f4a-a2ef-8a4a17f4fa90"
       }
     },
     "plugins": [
@@ -63,7 +65,7 @@
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
         }
       ]
-    ]
-    
+    ],
+    "owner": "bytib"
   }
 }
