@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useLayoutEffect, useEffect, useState } from "react";
 import Header from "../components/doctorProfile/Header";
@@ -71,6 +72,7 @@ const DrProfile = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
       <StatusBar barStyle="dark-content" backgroundColor="#eaf5fa" />
       <Header />
+      <ScrollView>
       <View style={{ flex: 1 }}>
       <View style={{flexDirection:'row', paddingHorizontal:15, paddingVertical:10}}>
         
@@ -82,7 +84,6 @@ const DrProfile = () => {
           <HeartIcon style={{marginHorizontal:10}} size={24} color="#000" />
         </TouchableOpacity>
       </View>
-
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             {doctor.photo ? <Image
@@ -121,9 +122,17 @@ const DrProfile = () => {
 
           <View>
             <Text className='pt-10'>Reviews section</Text>
+            <View>
+            <Text className='pt-10'>temp rate dr</Text>
+            <TouchableOpacity onPress={()=> navigation.navigate('rateDoctor')} >
+            <Text style={{backgroundColor:'#af23f3', paddingVertical: 5, paddingHorizontal: 15,color:'#fff' , borderRadius:5, fontSize:16, textAlign:'center'}} className='mt-10'>rate</Text>
+            </TouchableOpacity>
           </View>
-        </View>
-      </View>
+          </View>
+          
+          </View>
+          </View>
+          </ScrollView>
     </SafeAreaView>
   );
 };
@@ -139,6 +148,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     bottom: 70,
+    marginTop:100
   },
   imageContainer: {
     width: 121,

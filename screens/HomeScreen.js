@@ -37,10 +37,10 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eaf5fa" }}>
+    <Header />
       <ScrollView>
         {/* Header */}
         <View>
-          <Header />
 
           {/* Body */}
 

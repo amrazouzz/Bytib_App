@@ -5,7 +5,7 @@ import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
 
-export const Header = () => {
+export const SearchHeader = () => {
   const navigation = useNavigation();
   const {t,i18n} = useTranslation();
 
@@ -36,14 +36,40 @@ export const Header = () => {
     }
   };
   
+  const handleBack = () => {
+    console.log('pressed')
+    navigation.goBack()
+  }
   
 
   return (
     <View>
-      <View style={{ marginTop: StatusBar.currentHeight }}>
+          <View>
+              
+              
+          
         {/* <View> */}
         <View className="flex-row pb-3 items-center pt-3 space-x-2 justify-center bg-white w-full">
-          <View className="flex-row items-center bg-gray-300 rounded-xl p-2 w-3/4">
+          
+        <View style={styles.backButton}>
+        <Pressable
+          android_ripple={{
+            borderless: true,
+            radius: 20,
+            color: "#acccd4",
+          }}
+          onPress={handleBack}
+        >
+          {i18n.language === 'ar'?  <Icons.ArrowRightIcon
+              color="#272D37"
+              className="h-7 w-7 text-gray-500"
+            /> :  <Icons.ArrowLeftIcon
+              color="#272D37"
+              className="h-7 w-7 text-gray-500"
+            />}
+        </Pressable>
+      </View>
+                  <View style={{width:'78%', backgroundColor:'#E2E2E1'}} className="flex-row items-center  rounded-xl p-2 ">
           <TouchableOpacity
               onPress={() => navigation.navigate('searchScreen')}
               android_ripple={{
@@ -53,13 +79,13 @@ export const Header = () => {
               }}
             >
               <Icons.MagnifyingGlassIcon
-                color="#fff"
+                color="#000"
                 className="h-5 w-5 text-gray-500"
               />
             </TouchableOpacity>
             <TextInput
               placeholder={t('search')}
-              placeholderTextColor="white"
+              placeholderTextColor="#000"
               style={{
                 marginLeft: 10,
                 fontSize: 16,
@@ -77,42 +103,26 @@ export const Header = () => {
               }}
             >
               <Icons.MicrophoneIcon
-                color="#fff"
+                color="#000"
                 className="h-5 w-5 text-gray-500"
               />
             </TouchableOpacity>
-          </View>
-          <View className="flex-row space-x-3">
-            <TouchableOpacity
-              onPress={() => navigation.navigate("notifications")}
-              android_ripple={{
-                borderless: true,
-                radius: 30,
-                color: "#acccd4",
-              }}
-            >
-              <Icons.BellIcon
-                color="#509ca4"
-                className="h-7 w-7  text-blue-300 "
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>navigation.navigate('myOrdersScreen')}
-              android_ripple={{
-                borderless: true,
-                radius: 20,
-                color: "#acccd4",
-              }}
-            >
-              <Icons.ClipboardDocumentListIcon
-                color="#509ca4"
-                className="h-7 w-7  text-blue-300"
-              />
-            </TouchableOpacity>
-          </View>
         </View>
       </View>
+    </View>
     </View>
   );
 };
 
-export default Header;
+const styles = StyleSheet.create({
+    backButton: {
+        backgroundColor: "#F8F9F9",
+        borderRadius: 16,
+        padding: 8,
+        marginRight: 16,
+        left: 10,
+        direction: 'ltr',
+      },
+})
+
+export default SearchHeader;

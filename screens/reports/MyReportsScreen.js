@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
@@ -36,10 +36,13 @@ const MyReportsScreen = () => {
             <Image style={styles.icon} source={require('../../assets/images/myReports/medical.png')} />
             <Text style={styles.text} >{ t('medicalR') }</Text>
           </View>
+
+          <TouchableOpacity onPress={()=> navigation.navigate('labReports')}>
           <View style={styles.itemContainer}>
             <Image style={styles.icon} source={require('../../assets/images/myReports/lab.png')} />
             <Text style={styles.text} >{ t('labR') }</Text>
-          </View>
+            </View>
+            </TouchableOpacity>
           <View style={styles.itemContainer}>
             <Image style={styles.icon} source={require('../../assets/images/myReports/sonar.png')} />
             <Text style={styles.text} >{ t('sonarR') }</Text>
