@@ -2,7 +2,7 @@
   "expo": {
     "name": "ByTib",
     "slug": "bytib",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.SpeectToTextApp",
- "infoPlist": {
+      "infoPlist": {
         "NSSpeechRecognitionUsageDescription": "This app uses speech recognition to convert your speech to text.",
         "NSCameraUsageDescription": "This app uses the camera to let user put a photo in his profile page."
       }
@@ -31,16 +31,18 @@
         "backgroundColor": "#EAF5FA"
       },
       "permissions": [
-        "android.permission.RECORD_AUDIO"
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
-      "package": "com.anonymous.SpeechToTextApp"
+      "package": "com.anonymous.SpeechToTextApp",
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "e5300936-5e16-465b-97e5-38b17a04f0af"
+        "projectId": "06f8c8d0-7e75-4f4a-a2ef-8a4a17f4fa90"
       }
     },
     "plugins": [
@@ -51,19 +53,21 @@
         }
       ],
       [
-        "@react-native-voice/voice",
-        {
-          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
-          "speechRecognitionPermission": "Allow $(PRODUCT_NAME) to securely recognize user speech"
-        }
-      ],
-      [
         "expo-av",
         {
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 23,
+            "targetSdkVersion": 31
+          }
+        }
       ]
-    ]
-    
+    ],
+    "owner": "bytib"
   }
 }
