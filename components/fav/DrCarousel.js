@@ -108,7 +108,7 @@ const DrCarousel = () => {
 const styles = StyleSheet.create({
     card: {
       marginTop: 0,
-      width: 140,
+      width: 160,
       height:250,
       marginHorizontal: 10,
       position: "relative",
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     },
     cardImage: {
       alignSelf:'center',
-      width: "60%",
+      width: "70%",
       height: "100%",
       top:15,
       backgroundColor: '#fff',
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     },
     row: {
       flexDirection: "row",
-      justifyContent: "space-between",
+      justifyContent: "space-evenly",
       alignItems: "center",
       marginBottom: 5,
     },

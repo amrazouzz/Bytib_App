@@ -8,6 +8,7 @@ import { Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { Share } from 'react-native';
+import CustomText from '../common/CustomText';
 
 
 const Sidebar = () => {
@@ -79,79 +80,79 @@ const Sidebar = () => {
         
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer} ><Image style={styles.LinkIcon}  source={require('../../assets/images/sidebar/Profile.png')} /></View>
-            <Link style={styles.LinkText} to='/myProfile'>{t('sbProfile')}</Link>
+            <Link style={styles.LinkText} to='/myProfile'><CustomText bold>{t('sbProfile')}</CustomText></Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
             <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/30-appointment.png')} />
 
                 </View>
-            <Link style={styles.LinkText} to='/home'>{t('sbAppointments')}</Link>
+            <Link style={styles.LinkText} to='/home'><CustomText bold>{t('sbAppointments')}</CustomText></Link>
         </View>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Paper.png')} /></View>
-            <Link style={styles.LinkText} to='/myReports'>{t('sbReports')}</Link>
+            <Link style={styles.LinkText} to='/myReports'><CustomText bold>{t('sbReports')}</CustomText></Link>
         </View> 
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/family.png')} /></View>
-            <Link style={styles.LinkText} to='/familyMemberScreen'>{t('sbFamily')}</Link>
+            <Link style={styles.LinkText} to='/familyMemberScreen'><CustomText bold>{t('sbFamily')}</CustomText></Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/location.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbPharmacies')}</Link>
+            <Link style={styles.LinkText} to='/home'><CustomText bold>{t('sbPharmacies')}</CustomText></Link>
         </View>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Message.png')} /></View>
-            <Link style={styles.LinkText} to='/inboxScreen'>{t('sbInbox')}</Link>
+            <Link style={styles.LinkText} to='/inboxScreen'><CustomText bold>{t('sbInbox')}</CustomText></Link>
         </View>
 
         <TouchableOpacity onPress={handleSettingsPress}>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Setting.png')} /></View>
-            <Text style={styles.LinkText} >{t('sbSettings')}</Text>
+            <Text style={styles.LinkText} ><CustomText bold>{t('sbSettings')}</CustomText></Text>
         </View>
         </TouchableOpacity>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/about.png')} /></View>
-            <Link style={styles.LinkText} to='/about'>{t('sbAbout')}</Link>
+            <Link style={styles.LinkText} to='/about'><CustomText bold>{t('sbAbout')}</CustomText></Link>
         </View>
 
         <Pressable onPress={handleShare}>
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Shape.png')} /></View>
-            <Text style={styles.LinkText} >{t('sbShare')}</Text>
+            <Text style={styles.LinkText} ><CustomText bold>{t('sbShare')}</CustomText></Text>
         </View>
         </Pressable>
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Star.png')} /></View>
-            <Link style={styles.LinkText} to='/home'>{t('sbRate')}</Link>
+            <Link style={styles.LinkText} to='/home'><CustomText bold>{t('sbRate')}</CustomText></Link>
         </View>
 
 
         <View style={styles.Link}>
             <View style={styles.LinkIconContainer}>
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Calling.png')} /></View>
-            <Link style={styles.LinkText} to='/contactScreen'>{t('sbContact')}</Link>
+            <Link style={styles.LinkText} to='/contactScreen'><CustomText bold>{t('sbContact')}</CustomText></Link>
         </View>
 
         <Pressable onPress={handleLogoutPress}>
         <View style={styles.Link} >
             <View style={styles.LinkIconContainer} >
                 <Image style={styles.LinkIcon} source={require('../../assets/images/sidebar/Logout.png')} /></View>
-            <Text style={styles.LinkText}>{t('sbLogout')}</Text>
+            <Text style={styles.LinkText}><CustomText bold>{t('sbLogout')}</CustomText></Text>
         </View>
         </Pressable>
 

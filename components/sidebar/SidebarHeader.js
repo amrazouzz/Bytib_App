@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { API_URL } from '../../api/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getHeaderWithAuth } from '../../api/APIHeaders';
+import CustomText from '../common/CustomText';
 
 const SidebarHeader = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -37,8 +38,8 @@ const SidebarHeader = () => {
       />
       </View>
       <View >
-      <Text style={styles.name}>{userInfo?.full_name}</Text>
-      <Text style={styles.city}>{userInfo?.city_name}</Text>
+      <CustomText bold style={styles.name}>{userInfo?.full_name}</CustomText>
+      <CustomText style={styles.city}>{userInfo?.city_name}</CustomText>
       </View>
     </View>
   );
@@ -69,7 +70,6 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    fontWeight: '900',
     color: '#fff',
     marginBottom:10,
     top:15

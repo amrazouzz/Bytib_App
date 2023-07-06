@@ -4,6 +4,7 @@ import { t } from 'i18next';
 import React, { useEffect, useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import CustomText from '../../components/common/CustomText';
 
 const OnboardingScreen = ({ imageSource, title, description, onPress }) => {
   const navigation = useNavigation();
@@ -24,10 +25,10 @@ const OnboardingScreen = ({ imageSource, title, description, onPress }) => {
         <Image style={styles.image} source={imageSource} />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>{title}</Text>
+        <CustomText bold style={styles.title}>{title}</CustomText>
         <Pagination numberOfDots={3} activeDotIndex={2} />
         <TouchableOpacity style={styles.button} onPress={onPress}>
-          <Text style={styles.buttonText}>{t('getStarted')}</Text>
+          <CustomText bold style={styles.buttonText}>{t('getStarted')}</CustomText>
         </TouchableOpacity>
       </View>
     </View>

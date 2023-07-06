@@ -11,6 +11,7 @@ import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import CustomText from "../../components/common/CustomText";
 
 const SuccessfulPassword = () => {
   const navigation = useNavigation();
@@ -41,12 +42,12 @@ const SuccessfulPassword = () => {
         <SafeAreaView style={{ flex: 1 }}>
           <Header />
           <View style={styles.buttonContainer}>
-              <Text style={styles.Text} >{t('resetSuccessTitle')}</Text>
-              <Text style={styles.Discription} >{t('resetSuccessDesc')}</Text>
+              <CustomText  style={styles.Text} >{t('resetSuccessTitle')}</CustomText>
+              <CustomText  style={styles.Discription} >{t('resetSuccessDesc')}</CustomText>
 
             <View style={{ flexDirection: "column" }}>
               <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleLoginPress}>
-                <Text style={styles.buttonText}>{t('login')}</Text>
+                <CustomText bold style={styles.buttonText}>{t('login')}</CustomText>
               </TouchableOpacity>
             </View>
           </View>

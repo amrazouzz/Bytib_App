@@ -1,16 +1,41 @@
-import React from "react";
-import { Pressable, Text, View } from "react-native";
+import React, { useState }  from "react";
+import { Pressable, ScrollView, Text, View,  } from "react-native";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native";
 import { ImageBackground } from "react-native";
+import ArticlesCarousel from "./Articles";
 
 const NavBar = () => {
   const navigation = useNavigation();
+  const [navbarVisible, setNavbarVisible] = useState(true);
+
+
+
+  const handleNavbarToggle = () => {
+    setNavbarVisible(!navbarVisible);
+  };
+
+  const renderArticles = () => {
+    if (!navbarVisible) {
+      return (
+          <ArticlesCarousel />
+      );
+    }
+    return null;
+  };
 
   return (
     <View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          backgroundColor: "#EAF5FA",
+        }}
+      >
+      <View>
       <View
         style={{
           flex: 1,
@@ -29,8 +54,14 @@ const NavBar = () => {
             zIndex: 10,
           }}
         >
-          <TouchableOpacity onPress={() => navigation.navigate("map")}>
-            <View style={[styles.button, styles.actionBtn]}>
+          <TouchableOpacity onPress={() => navigation.navigate("map")}
+          style={styles.button}
+          android_ripple={{
+            borderless: true,
+            radius: 30,
+            color: "#acccd4",
+          }}>
+            <View>
               <Image
                 style={{ width: 60, height: 60, top: 10 }}
                 resizeMode="contain"
@@ -39,10 +70,13 @@ const NavBar = () => {
             </View>
           </TouchableOpacity>
         </View>
-        <ImageBackground
+        <Pressable onPress={handleNavbarToggle}>
+            <ImageBackground
           style={styles.NavContainer}
-          source={require("../../assets/home/navbar/bg.png")}
-        >
+              source={require("../../assets/home/navbar/bg.png")}
+              >
+                
+                
           <View>
             <View style={styles.NavBar}>
               <TouchableOpacity
@@ -106,8 +140,14 @@ const NavBar = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </ImageBackground>
+              </ImageBackground>
+              
+              </Pressable>
       </View>
+    </View>
+
+      </View>
+      {renderArticles()}
     </View>
   );
 };
@@ -167,6 +207,32 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
+  articlesContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    marginVertical: 10,
+  },
+  article: {
+    alignItems: "center",
+    flexDirection: 'row',
+    marginBottom: 10,
+    paddingHorizontal: 25
+  },
+  articleImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 15,
+  },
+  articleText: {
+    marginTop: 5,
+    textAlign: "center",
+    paddingHorizontal: 10
+  },
+  touchableMap: {
+    top: 5,
+    left: 5,
+  },
+
 });
 
 export default NavBar;

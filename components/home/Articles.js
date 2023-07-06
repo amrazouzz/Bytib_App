@@ -22,17 +22,18 @@ const navigation = useNavigation();
     fetchArticles();
   }, []);
 
-  const handleArticlePress = (article) => {
-    navigation.navigate('articleDetails', { article });
+  const handleArticlePress = () => {
+    navigation.navigate('articles');
   };
 
+  const newArticals  = articles.slice(0, 2);
   return (
     <>
 <FlatList
-  data={articles}
+  data={newArticals}
   keyExtractor={(item) => item.id.toString()}
   renderItem={({ item }) => (
-    <TouchableOpacity onPress={() => handleArticlePress(item)} >
+    <TouchableOpacity onPress={() => handleArticlePress()} >
     <View style={{ flexDirection: 'row', padding: 16, }}>
       <View style={{ marginRight: 16 }}>
         {item.banner_image ? (

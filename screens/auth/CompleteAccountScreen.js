@@ -14,6 +14,7 @@ import * as Icon from "react-native-heroicons/outline";
 import { API_URL } from "../../api/api";
 import { Picker } from "@react-native-picker/picker";
 import { useTranslation } from "react-i18next";
+import CustomText from "../../components/common/CustomText";
 
 const CompeleteAccountScreen = () => {
     const [gender, setGender] = useState('')
@@ -89,7 +90,7 @@ const CompeleteAccountScreen = () => {
             style={styles.loginButton}
             onPress={handleCompletePress}
           >
-            <Text style={styles.buttonText}>{t('save')}</Text>
+            <CustomText bold style={styles.buttonText}>{t('save')}</CustomText>
           </TouchableOpacity>
         </View>
       </View>

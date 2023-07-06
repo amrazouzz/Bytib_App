@@ -20,12 +20,12 @@ const ArticlesCarousel = () => {
 
   useEffect(() => {
     fetchArticles();
-    console.log(articles)
   }, []);
   const newArticals  = articles.slice(0, 4);
   const handleArticlePress = (article) => {
     navigation.navigate('articleDetails', { article });
   };
+  
   return (
     <FlatList
       data={newArticals}

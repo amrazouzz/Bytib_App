@@ -11,6 +11,7 @@ import Header from "../../components/auth/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import CustomText from "../../components/common/CustomText";
 
 const Auth = () => {
   const navigation = useNavigation();
@@ -54,11 +55,11 @@ const Auth = () => {
           <Header />
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleLoginPress}>
-              <Text style={styles.buttonText}>{t('login')}</Text>
+              <CustomText bold style={styles.buttonText}>{t('login')}</CustomText>
             </TouchableOpacity>
             <View style={{ flexDirection: "column" }}>
               <TouchableOpacity style={[styles.button, { flex: 1 }]} onPress={handleSignUpPress}>
-                <Text style={styles.buttonText}>{t('signup')}</Text>
+                <CustomText bold style={styles.buttonText}>{t('signup')}</CustomText>
               </TouchableOpacity>
             </View>
           </View>
@@ -99,7 +100,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
     alignSelf:'center'
   },
 });

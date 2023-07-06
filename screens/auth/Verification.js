@@ -15,6 +15,7 @@ import { API_URL } from "../../api/api";
 import { useTranslation } from "react-i18next";
 import axios from 'axios';
 import { getHeaders } from "../../api/APIHeaders";
+import CustomText from "../../components/common/CustomText";
 
 
 const VerificationScreen = ({ route }) => {
@@ -169,7 +170,7 @@ try {
             style={styles.loginButton}
             onPress={handleForgotPress}
           >
-            <Text style={styles.buttonText}>{t('check')}</Text>
+            <CustomText bold style={styles.buttonText}>{t('check')}</CustomText>
           </TouchableOpacity>
         </View>
       </View>

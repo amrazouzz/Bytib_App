@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width,
-    height: 200,
+    height: 220,
     resizeMode: "cover",
     top:10,
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
-    bottom: 20,
+    bottom: 10,
   },
   circle: {
     width: 10,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   scrollView: {
-    height: 200,
+    height: 230,
   },
   scrollViewContent: {
     flexGrow: 1,

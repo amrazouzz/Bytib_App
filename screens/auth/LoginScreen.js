@@ -17,6 +17,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { user_login } from "../../api/userApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import CustomText from "../../components/common/CustomText";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -105,16 +106,16 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.forgot} onPress={handleForgot}>
-          <Text style={styles.forgot} className="text-sm text-red-500">
+          <CustomText style={styles.forgot} className="text-sm text-red-500">
             {t('forgotPassword')}
-          </Text>
+          </CustomText>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.loginButton}
             onPress={handleLoginPress}
           >
-            <Text style={styles.buttonText}>{t('login')}</Text>
+            <CustomText bold style={styles.buttonText}>{t('login')}</CustomText>
           </TouchableOpacity>
         </View>
       </View>

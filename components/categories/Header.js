@@ -3,10 +3,12 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import * as Icons from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
+import CustomText from "../common/CustomText";
 
 export default function Header() {
   const navigation = useNavigation();
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
+  
 
 
   return (
@@ -31,7 +33,7 @@ export default function Header() {
         </Pressable>
       </View>
       {/* Title */}
-      <Text className='font-extrabold' style={styles.title}>{t('categoriesHeader')}</Text>
+      <CustomText style={styles.title} bold>{t('categoriesHeader')}</CustomText>
     </View>
   );
 }
@@ -56,7 +58,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
     color: "black",
   },
 });

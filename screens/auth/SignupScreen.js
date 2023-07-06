@@ -15,6 +15,7 @@ import CountryPicker from "react-native-country-picker-modal";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 import { useTranslation } from "react-i18next";
+import CustomText from "../../components/common/CustomText";
 
 const SignupScreen = () => {
   const [name, setName] = useState("");
@@ -186,7 +187,7 @@ const SignupScreen = () => {
             style={styles.loginButton}
             onPress={handleSignupPress}
           >
-            <Text style={styles.buttonText}>{t('signup')}</Text>
+            <CustomText bold style={styles.buttonText}>{t('signup')}</CustomText>
           </TouchableOpacity>
         </View>
       </View>

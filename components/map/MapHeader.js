@@ -45,7 +45,7 @@ const MapHeader = () => {
           <View className="flex-row pb-3 items-center pt-3 space-x-2 justify-center bg-white w-full">
             <View style={{width:'85%'}} className="flex-row items-center bg-gray-300 rounded-xl p-2">
             <TouchableOpacity
-                onPress={() => console.log("Search button pressed")}
+            onPress={() => navigation.navigate('searchScreen')}
                 android_ripple={{
                   borderless: true,
                   radius: 20,

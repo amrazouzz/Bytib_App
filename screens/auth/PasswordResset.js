@@ -16,6 +16,7 @@ import { API_URL } from "../../api/api";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { getHeaders } from "../../api/APIHeaders";
+import CustomText from "../../components/common/CustomText";
 
 const PasswordReset = ({ route }) => {
   const [password, setPassword] = useState("");
@@ -173,7 +174,7 @@ const PasswordReset = ({ route }) => {
             style={styles.loginButton}
             onPress={handleConfirmPress}
           >
-            <Text style={styles.buttonText}>{t("confirm")}</Text>
+            <CustomText bold style={styles.buttonText}>{t("confirm")}</CustomText>
           </TouchableOpacity>
         </View>
       </View>

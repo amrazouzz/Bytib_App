@@ -2,21 +2,20 @@ import {
   View,
   Text,
   SafeAreaView,
-  Image,
-  TextInput,
   ScrollView,
+  StyleSheet,
 } from "react-native";
 import React, { useEffect, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import * as Icons from "react-native-heroicons/outline";
 import ImageCarousel from "../components/home/ImageCarousel";
 import Header from "../components/home/Header";
 import NavBar from "../components/home/NavBar";
 import CategoriesCarousel from "../components/home/CategoriesCarousel";
 import DoctorsCarousel from "../components/home/DoctorsCarousel";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { TouchableOpacity } from "react-native";
+
 import { useTranslation } from "react-i18next";
+import CustomText from "../components/common/CustomText";
 
 const HomeScreen = () => {
   const { t, i18n } = useTranslation();
@@ -52,27 +51,27 @@ const HomeScreen = () => {
           <View className="px-5 mb-0">
             {i18n.language === "ar" ? (
               <View className="mt-5 flex flex-row justify-between mb-4">
-                <Text
+                <CustomText
                   onPress={() => navigation.navigate("categories")}
-                  className="font-light text-lg"
+                  className=" text-lg"
                 >
                   {t("seeAll")}
-                </Text>
-                <Text className="text-2xl font-extrabold">
+                </CustomText>
+                <CustomText className="text-2xl" bold>
                   {t("categoryTitle")}
-                </Text>
+                </CustomText>
               </View>
             ) : (
               <View className="mt-5 flex flex-row justify-between mb-4">
-                <Text className="text-2xl font-extrabold">
+                <CustomText className="text-2xl  " bold>
                   {t("categoryTitle")}
-                </Text>
-                <Text
+                </CustomText>
+                <CustomText
                   onPress={() => navigation.navigate("categories")}
-                  className="font-light text-lg"
+                  className="  text-lg"
                 >
                   {t("seeAll")}
-                </Text>
+                </CustomText>
               </View>
             )}
 
@@ -85,22 +84,22 @@ const HomeScreen = () => {
           <View className="py-2 px-5">
             {i18n.language === "ar" ? (
               <View className=" flex flex-row justify-between mb-4 mt-2">
-                <Text
-                  className="font-light text-lg"
+                <CustomText
+                  className="  text-lg"
                 >
                   {t("seeAll")}
-                </Text>
-                <Text className="text-2xl font-extrabold">{t("topRated")}</Text>
+                </CustomText>
+                <CustomText className="text-2xl  " bold>{t("topRated")}</CustomText>
               </View>
             ) : (
               <View className=" flex flex-row justify-between mb-4 mt-2">
-                <Text className="text-2xl font-extrabold">{t("topRated")}</Text>
-                <Text
+                <CustomText className="text-2xl  " bold>{t("topRated")}</CustomText>
+                <CustomText
                   
-                  className="font-light text-lg"
+                  className="  text-lg"
                 >
                   {t("seeAll")}
-                </Text>
+                </CustomText>
               </View>
             )}
 
@@ -116,5 +115,7 @@ const HomeScreen = () => {
     </SafeAreaView>
   );
 };
+
+
 
 export default HomeScreen;

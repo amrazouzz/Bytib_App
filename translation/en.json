@@ -187,6 +187,11 @@
     "backHome": "Back To Home",
     "continue": "Continue",
     "doctorRate": "Doctor Rate",
-    "thanksRating": "Thanks for your awesome experience"
+    "thanksRating": "Thanks for your awesome experience",
+
+    "laboratories": "Laboratories",
+    "radiology": "Radiology",
+    "pharmacies": "Pharamcies",
+    "sonar": "Sonar"
 
 } 

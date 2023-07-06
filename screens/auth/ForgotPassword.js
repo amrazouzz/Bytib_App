@@ -15,6 +15,7 @@ import { API_URL } from "../../api/api";
 import { useTranslation } from "react-i18next";
 import { getHeaders } from "../../api/APIHeaders";
 import axios from "axios";
+import CustomText from "../../components/common/CustomText";
 
 
 const ForgotScreen = () => {
@@ -69,8 +70,8 @@ const ForgotScreen = () => {
         <View style={styles.formContainer}>
         <Image style={{width:200, marginBottom:10}} source={require('../../assets/images/auth/forgot.png')} />
           <View>
-            <Text className='text-xl font-bold ' style={{color:'#509ca4',    fontWeight:'900' }}>{t('forgotPassword')}</Text>
-            <Text className='font-bold' style={{alignSelf:'center', alignContent:'center'}}>{t('forgotPasswordDesc')}</Text>
+            <CustomText bold className='text-xl  ' style={{color:'#509ca4',    fontWeight:'900' }}>{t('forgotPassword')}</CustomText>
+            <CustomText bold style={{alignSelf:'center', alignContent:'center'}}>{t('forgotPasswordDesc')}</CustomText>
         </View>
           <TextInput
             style={styles.input}
@@ -84,7 +85,7 @@ const ForgotScreen = () => {
             style={styles.loginButton}
             onPress={handleForgotPress}
           >
-            <Text style={styles.buttonText}>{t('send')}</Text>
+            <CustomText bold style={styles.buttonText}>{t('send')}</CustomText>
           </TouchableOpacity>
         </View>
       </View>

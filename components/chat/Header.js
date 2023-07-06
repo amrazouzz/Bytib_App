@@ -2,17 +2,18 @@ import React from "react";
 import { Pressable, StatusBar, StyleSheet, Text, View } from "react-native";
 import * as Icons from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Header() {
   const navigation = useNavigation();
 
   return (
-    <View style={{ marginTop: StatusBar.currentHeight }}>
+    <SafeAreaView>
     <View style={styles.container}>
       {/* Title */}
       <Text className='font-extrabold' style={styles.title}>CHAT</Text>
     </View>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({

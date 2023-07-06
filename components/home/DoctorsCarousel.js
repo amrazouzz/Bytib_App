@@ -102,12 +102,13 @@ const styles = StyleSheet.create({
     marginTop: 2,
     width: 160,
     height:240,
-    marginHorizontal: 10,
+    marginHorizontal: 7,
     position: "relative",
     marginBottom:70,
     bottom:10,
     backgroundColor: "#fff",
     borderRadius: 5,
+    overflow:'hidden'
 
   },
   cardImageContainer: {
